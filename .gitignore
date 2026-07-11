@@ -1,0 +1,46 @@
+# Operating systems and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+
+# JavaScript
+node_modules/
+.pnpm-store/
+.vite/
+coverage/
+
+# Local state and secrets
+.env
+.env.*
+!.env.example
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.log
+
+# Packaging and local worktrees
+target/
+src-tauri/target/
+.worktrees/
+.superpowers/
+
+# Generated diagnostics
+diagnostics/
+artifacts/
