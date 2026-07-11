@@ -1,0 +1,157 @@
+name: Feature request
+description: Propose a requirement-linked, testable, privacy-preserving product change
+title: "[Feature] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Proposals are evaluated against local-first operation, read-only defaults, explicit authority, evidence provenance, no telemetry, and the managed/unmanaged assurance boundary.
+
+        Do not include secrets, private repository content, personal paths, credentials, raw AI prompts, or unredacted machine details. Security vulnerabilities require private reporting rather than a public feature request.
+
+        PortAtlas is a working title. A feature must not publish or reserve a public package, domain, executable, bundle, manifest convention, or trademark identity before the name-clearance gate closes.
+
+  - type: checkboxes
+    id: disclosure_checks
+    attributes:
+      label: Public disclosure checks
+      options:
+        - label: I removed secrets, private project content, personal paths, and identifying machine data.
+          required: true
+        - label: This request is not a vulnerability disclosure.
+          required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem and outcome
+      description: Describe who has the problem, the current failure or friction, and the measurable outcome that would improve.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed_behavior
+    attributes:
+      label: Proposed behavior
+      description: Describe user-visible behavior, inputs, outputs, error states, and graceful degradation. Keep implementation choices separate when possible.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: roadmap_scope
+    attributes:
+      label: Proposed scope
+      description: Select the smallest plausible delivery horizon; maintainers make the final scope decision.
+      options:
+        - MVP requirement correction
+        - Version 1 candidate
+        - Future research
+        - Documentation or contributor experience
+        - Unsure
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe non-feature, lower-authority, manual, configuration, or documentation alternatives and why they are insufficient.
+    validations:
+      required: true
+
+  - type: textarea
+    id: managed_boundary
+    attributes:
+      label: Managed and unmanaged assurance
+      description: Explain whether the proposal observes unmanaged state or coordinates a reservation or lease. If it proposes managed launch, label that capability Version 1 rather than MVP, state the residual race, and avoid zero-conflict claims.
+    validations:
+      required: true
+
+  - type: textarea
+    id: permission_security
+    attributes:
+      label: Permissions and security impact
+      description: Identify filesystem, process, Docker, network, auth, MCP, mutation, scan-root, data-retention, and supply-chain authority. Describe the least-privilege and confirmation boundary.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: telemetry_impact
+    attributes:
+      label: Telemetry or remote-data impact
+      description: The accepted default is no telemetry and no automatic remote data flow. Any change requires a separate privacy review, ADR, explicit opt-in, and founder approval.
+      options:
+        - No telemetry or remote data flow
+        - Local metrics or diagnostics only
+        - Proposes remote data flow and requires a separate gate
+        - Unknown and requires security review
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai_impact
+    attributes:
+      label: Conditional AI impact
+      description: Core correctness cannot depend on an LLM. AI is advisory, local by default, disabled by default, read-only, and conditional on its release gate.
+      options:
+        - No AI dependency
+        - Optional AI presentation or explanation
+        - Optional AI structured proposal
+        - Expands AI authority and requires a new ADR
+        - Unknown and requires security review
+    validations:
+      required: true
+
+  - type: textarea
+    id: deterministic_fallback
+    attributes:
+      label: Deterministic and offline fallback
+      description: Explain how core behavior works with no internet, no Docker when Docker is optional, and no Ollama or model.
+    validations:
+      required: true
+
+  - type: input
+    id: traceability
+    attributes:
+      label: Related requirement and decision references
+      description: List related BO, PF, US, SRS, AC, VT-SRS, UAT, ADR, risk, issue, or pull-request identifiers. State New requirement when no stable identifier exists.
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance and verification evidence
+      description: Provide Given, When, Then outcomes, relevant test layers, measurable pass conditions, required environments, negative cases, and the evidence a reviewer must inspect.
+    validations:
+      required: true
+
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibility and lifecycle impact
+      description: Cover API, SSE, CLI, MCP, database, configuration, manifest, import/export, packaging, upgrade, rollback, backup, uninstall, platform, and accessibility impact.
+    validations:
+      required: true
+
+  - type: textarea
+    id: identity_impact
+    attributes:
+      label: Public-name or namespace impact
+      description: State whether the proposal affects the working title, package names, executable or service names, bundle identifiers, manifest filename, domains, or registry publication.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: policy_checks
+    attributes:
+      label: Policy checks
+      options:
+        - label: The proposal does not require telemetry or remote AI by default.
+          required: true
+        - label: The proposal preserves a deterministic core path without an LLM.
+          required: true
+        - label: The proposal does not claim unmanaged processes can be prevented from racing or ignoring the registry.
+          required: true
+        - label: The proposal does not make commercial use conditional on payment or sponsorship.
+          required: true

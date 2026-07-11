@@ -1,0 +1,171 @@
+name: Bug report
+description: Report reproducible incorrect behavior with redacted verification evidence
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping improve the project.
+
+        **Do not include secrets or private machine data.** Never paste environment files, credentials, tokens, cookies, private keys, database URLs, Docker credentials, MCP bearer values, full process arguments, raw AI prompts, arbitrary source files, or unredacted diagnostic bundles. Replace personal paths and names with stable neutral labels.
+
+        **Do not report a suspected vulnerability here.** Stop before submitting exploit details publicly. Use GitHub Private Vulnerability Reporting when it is enabled or the private contact documented in the repository security policy. If neither channel is available, request a private maintainer contact without describing the vulnerability.
+
+        PortAtlas is a working title and not a cleared public name. This form does not represent a released product or public namespace.
+
+  - type: checkboxes
+    id: disclosure_checks
+    attributes:
+      label: Public disclosure checks
+      options:
+        - label: I removed secrets, personal paths, private project content, and identifying machine data.
+          required: true
+        - label: This report is not a vulnerability report and does not contain exploit details.
+          required: true
+
+  - type: dropdown
+    id: project_stage
+    attributes:
+      label: Project stage observed
+      description: Select the stage that actually existed when you observed the problem.
+      options:
+        - Documentation-only pre-implementation checkpoint
+        - Engineering-foundation development
+        - Implemented local development build
+        - Packaged release candidate
+        - Published release
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      multiple: true
+      options:
+        - Product or requirements documentation
+        - Architecture or ADR
+        - Host collector
+        - Docker integration
+        - Project discovery or parser
+        - Registry, allocator, or conflict engine
+        - Persistence or migration
+        - REST or SSE
+        - CLI
+        - MCP
+        - Browser UI or accessibility
+        - Authentication or permissions
+        - Privacy, redaction, or diagnostics
+        - Conditional local AI
+        - Packaging, upgrade, rollback, or uninstall
+        - Release or open-source governance
+    validations:
+      required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Describe the incorrect behavior and its user impact in concise factual terms.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State the requirement, contract, or user-visible result you expected.
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: State what occurred, including typed errors or degraded status without sensitive payloads.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: List the smallest ordered sequence that reproduces the issue using synthetic or redacted data. State whether it reproduces consistently.
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Redacted environment
+      description: Include source revision or released version, macOS version, architecture, installation profile, browser or client version, and relevant integration state. Omit usernames, absolute home paths, project names, credentials, and unrelated software inventory.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: managed_state
+    attributes:
+      label: Managed or unmanaged context
+      description: A PortAtlas-aware reservation or lease coordinates cooperating clients. An unmanaged process can ignore or race the registry; a point-in-time availability check is not a zero-conflict guarantee.
+      options:
+        - Managed or PortAtlas-aware reservation or lease
+        - Unmanaged external process or launch
+        - Conflict between managed and unmanaged state
+        - Not applicable
+        - Unknown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai_state
+    attributes:
+      label: Conditional AI state
+      description: Core behavior must remain functional without a provider. Do not paste prompts, responses, model context, or source content.
+      options:
+        - AI disabled or not installed
+        - AI enabled with a local provider
+        - AI provider unavailable or degraded
+        - Not applicable
+        - Unknown
+    validations:
+      required: true
+
+  - type: input
+    id: traceability
+    attributes:
+      label: Requirement and test references
+      description: List applicable SRS, AC, VT-SRS, UAT, ADR, risk, issue, or pull-request identifiers. State None identified when reporting from a released user surface.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification evidence
+      description: Record exact invocations actually executed, exit status, test IDs and counts, timestamps, environment profile, artifact hashes, and redacted evidence. Do not present planned documentation as an executed result.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Redacted logs or screenshots
+      description: Include only the minimum excerpt needed. Confirm redaction before upload; screenshots can reveal usernames, paths, repository names, tokens, ports, browser tabs, and notifications.
+
+  - type: textarea
+    id: regression
+    attributes:
+      label: Regression and workaround
+      description: State the last known unaffected revision or version when known, and describe any safe non-destructive workaround.
+
+  - type: checkboxes
+    id: truth_checks
+    attributes:
+      label: Product-truth checks
+      options:
+        - label: I did not describe unmanaged detection or a point-in-time suggestion as guaranteed conflict prevention.
+          required: true
+        - label: I identified optional Docker or AI absence as not executed or degraded, not as passing evidence.
+          required: true
+        - label: I did not assume telemetry exists; any network observation is described with evidence.
+          required: true
