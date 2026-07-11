@@ -1,6 +1,6 @@
 # PortAtlas
 
-> **Working title and pre-implementation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-and-trademark-clearance.md) is resolved.
+> **Working title and pre-implementation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md) is resolved.
 
 PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. This repository is at **Gate 2: product and architecture foundation**. It contains documentation, governance, and a documentation validator only; it does not yet contain an installable application.
 
@@ -30,7 +30,7 @@ The proposed `.portatlas.yaml` manifest is a design contract only and must not b
 
 ## Documentation map
 
-- [Product charter](docs/product/product-charter.md)
+- [Product charter](docs/product/project-charter.md)
 - [Business requirements](docs/product/brd.md) and [product requirements](docs/product/prd.md)
 - [Software requirements specification](docs/requirements/srs.md) and [traceability matrix](docs/requirements/traceability-matrix.md)
 - [Architecture](docs/architecture/system-context.md) and [architecture decisions](docs/adr/README.md)
@@ -51,4 +51,4 @@ python3 scripts/validate_docs.py
 
 ## License and commercial use
 
-PortAtlas is intended to be released under the [Apache License 2.0](LICENSE). Companies and individuals may use it commercially without paying for permission, subject to that license. Sponsorship is voluntary and does not purchase usage rights. The project name and marks are separate from the copyright license; see [GOVERNANCE.md](GOVERNANCE.md) and ADR-0023.
+This repository is licensed under the [Apache License 2.0](LICENSE). Companies and individuals may use it commercially without paying for permission, subject to that license. Sponsorship is voluntary and does not purchase usage rights. The project name and marks are separate from the copyright license; see [GOVERNANCE.md](GOVERNANCE.md) and ADR-0023.

@@ -4,7 +4,7 @@ Thank you for helping shape this project. The current repository is a pre-implem
 
 ## Before proposing a change
 
-1. Read [AGENTS.md](AGENTS.md), the [product charter](docs/product/product-charter.md), and the relevant ADRs.
+1. Read [AGENTS.md](AGENTS.md), the [product charter](docs/product/project-charter.md), and the relevant ADRs.
 2. Use an issue to describe the problem, affected requirement IDs, expected tests, privacy impact, and managed-versus-unmanaged assurance impact.
 3. Report vulnerabilities privately as described in [SECURITY.md](SECURITY.md); never include secrets, tokens, private project contents, or exploit details in an issue.
 
