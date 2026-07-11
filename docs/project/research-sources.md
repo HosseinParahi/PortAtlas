@@ -67,7 +67,7 @@ These checks are discovery signals, not legal clearance, availability guarantees
 | EUIPO | Public exact-title web indexing produced no reliable official record. | Inconclusive; a professional similarity and class search is still required. |
 | WIPO | Public exact-title web indexing produced no reliable Global Brand Database record. | Inconclusive; a professional international search is still required. |
 
-The result is not “name available.” The result is **collision risk confirmed and clearance incomplete**. [ADR-0023](../adr/0023-working-name-collision-and-trademark-clearance.md) blocks public namespaces until the founder receives adequate clearance or selects a replacement.
+The result is not “name available.” The result is **collision risk confirmed and clearance incomplete**. [ADR-0023](../adr/0023-working-name-collision-trademark-clearance.md) blocks public namespaces until the founder receives adequate clearance or selects a replacement.
 
 ## Licensing sources
 

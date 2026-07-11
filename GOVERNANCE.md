@@ -20,7 +20,7 @@ Apache-2.0 permits commercial use without payment. Sponsorship is optional, does
 
 ## Name and marks
 
-`PortAtlas` is a working title. The Apache-2.0 copyright license does not grant trademark rights. Public naming, package namespaces, domains, and artwork remain blocked by [ADR-0023](docs/adr/0023-working-name-collision-and-trademark-clearance.md).
+`PortAtlas` is a working title. The Apache-2.0 copyright license does not grant trademark rights. Public naming, package namespaces, domains, and artwork remain blocked by [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md).
 
 ## Changes to governance
 
