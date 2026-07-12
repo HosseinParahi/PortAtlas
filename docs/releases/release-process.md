@@ -1,10 +1,10 @@
 # Release Process
 
-Status: **Proposed pre-implementation release contract**
+Status: **Proposed release contract; Gate 3 candidate-local evidence complete**
 
 ## Current checkpoint truth
 
-This document defines the evidence a future release must produce. It does not claim that an application, installable artifact, release version, build command, test command, signing identity, publication namespace, or CI workflow exists.
+This document defines the evidence a future release must produce. Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md). Gate 3 contributor commands are implemented and candidate-local evidence is complete, while exact-revision hosted CI and founder binding remain open. This document does not claim an installable artifact, public release version, signing identity, publication namespace, or accepted package lifecycle.
 
 The architecture decisions are recorded for review, but this document does not by itself mark a delivery gate complete. Gate disposition must be explicit and linked from the decision or work log.
 
@@ -19,7 +19,7 @@ PortAtlas is a working title. No public package, executable identity, domain, co
 | Gates 4–8 — Product evidence | Prove runtime, discovery, allocation, UI, MCP, security, and conditional AI behavior | Requirement-linked automated tests, real-machine evidence where required, security review, performance results, and UAT dispositions | No public release is authorized before Gate 9 |
 | Gate 9 — Release | Approve a specific, immutable release candidate | Complete checklist, artifact hashes, lifecycle tests, signing and license evidence, name clearance, security review, UAT, and founder approval | Approval applies only to the reviewed candidate |
 
-Gate 3 work starts only after Gate 2 has an explicit approving disposition. Planned commands in Gate 2 documents become supported commands only after Gate 3 records their executable form and successful evidence.
+Gate 3 work started after the explicit Gate 2 disposition. Implemented contributor commands are supported only where [Development setup](../operations/development-setup.md) records successful evidence. The remaining exit proof is defined by [the Gate 3 sprint brief](../project/gate-3-sprint-brief.md).
 
 ## Release roles
 
@@ -55,7 +55,8 @@ One person may hold multiple roles, but each required disposition remains explic
 - Preserve copyright and modification notices required by Apache-2.0.
 - Confirm documentation states that Apache-2.0 permits commercial use without payment to the maintainers.
 - Confirm sponsorship is voluntary and is not tied to installation, features, commercial use, support eligibility, security handling, or telemetry.
-- Verify every contribution included in the candidate satisfies the Developer Certificate of Origin through a matching Signed-off-by trailer.
+- Verify every contribution after the initial baseline satisfies the Developer Certificate of Origin through a matching `Signed-off-by` trailer.
+- Include the founder-approved [forward provenance attestation](../project/gate-2-approval.md#provenance-attestation-for-the-root-commit) for root commit `8081f409f54f088d61f9a36433b7e56f2410e66f`. Do not rewrite the accepted Gate 2 history or report that commit as carrying a trailer it lacks.
 
 ### 4. Build the immutable candidate
 
@@ -65,7 +66,7 @@ One person may hold multiple roles, but each required disposition remains explic
 - Sign and notarize only the final candidate artifacts.
 - Rebuilding a changed source revision creates a new candidate and invalidates prior approval.
 
-No invocation is specified here because Gate 3 has not established supported project commands.
+No build or release invocation is specified here. Gate 3 may establish supported contributor quality commands, but only [Development setup](../operations/development-setup.md) may promote them after execution evidence. Release build, package, signing, and publication commands remain Gate 9 concerns.
 
 ### 5. Run quality and acceptance evidence
 
@@ -109,6 +110,8 @@ If AI is included:
 - The exact provider version and model digest are recorded; a model recommendation is not a hidden dependency.
 
 ### 9. Validate package lifecycle
+
+The bounded Gate 3 packaging research spike does not satisfy any lifecycle item below. Package implementation, selection, signing, notarization, and lifecycle acceptance begin only in Gate 9 after the spike's hypotheses are reviewed.
 
 - Perform timed clean installation on each supported macOS architecture.
 - Verify authentication bootstrap, user-only credential permissions, loopback binding, offline core, start, stop, restart, logs, crash recovery, and degraded integrations.

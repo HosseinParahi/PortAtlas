@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping shape this project. The current repository is a pre-implementation documentation baseline, so contributions should preserve the accepted scope and traceability model.
+Thank you for helping shape this project. The repository contains a private Gate 3 engineering foundation; later-gate collectors, scanners, allocation behavior, product workflows, integrations, and release packaging remain unimplemented. Contributions must preserve the accepted scope and traceability model.
 
 ## Before proposing a change
 
@@ -13,7 +13,7 @@ Thank you for helping shape this project. The current repository is a pre-implem
 - Keep changes focused and link their product, requirement, ADR, and test references.
 - Include verification evidence and update documentation in the same change.
 - Confirm that examples and diagnostic output are redacted.
-- Run `python3 scripts/validate_docs.py` and `git diff --check`.
+- Run the supported checks in [Development setup](docs/operations/development-setup.md), including `python3 scripts/check.py all` and `git diff --check`.
 - Preserve accessibility, offline behavior, and degradation guarantees.
 
 ## Developer Certificate of Origin

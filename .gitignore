@@ -23,6 +23,13 @@ node_modules/
 .pnpm-store/
 .vite/
 coverage/
+apps/web/dist/
+
+# Tooling and generated contracts
+.coverage
+coverage.xml
+*.whl
+*.tar.gz
 
 # Local state and secrets
 .env

@@ -1,6 +1,6 @@
 # Research Sources and Baseline
 
-Research was checked on **2026-07-11**. Version observations are planning inputs, not dependency locks or minimum product requirements. Phase 3 must reverify exact versions before selecting or installing anything.
+Core stack research was checked on **2026-07-11** and Gate 3 supply-chain tooling was rechecked on **2026-07-13**. Machine-readable pins and frozen locks are now the contributor authority recorded by `G3-02` and `G3-03`; observations that are not adopted by those files remain planning inputs rather than product requirements.
 
 ## Verified machine snapshot
 
@@ -19,6 +19,28 @@ The checkpoint machine reported:
 | Rust | No `rustc` or `cargo` toolchain found |
 
 This snapshot proves only what was present on one development machine. It must not become a hard-coded compatibility floor, installation promise, or assumption that Docker or Ollama is running.
+
+## Gate 3 toolchain selection
+
+The Gate 3 research pass selected and the evidence run adopted these foundation pins:
+
+| Tool | Gate 3 candidate | Reason and authority |
+| --- | --- | --- |
+| Python | 3.13.14 | Matches the Accepted Python 3.13 runtime line in ADR 0001; [official Python release](https://www.python.org/downloads/release/python-31314/) |
+| Node.js | 24.18.0 LTS | LTS contributor line compatible with the Vite 8 floor; [official Node release](https://nodejs.org/en/blog/release/v24.18.0) |
+| uv | 0.11.28 | Exact project/lock manager candidate; [PyPI project record](https://pypi.org/project/uv/0.11.28/) |
+| pnpm | 11.10.0 | Exact private-workspace package manager candidate; [npm package record](https://www.npmjs.com/package/pnpm/v/11.10.0) |
+
+These pins do not overwrite the earlier machine snapshot or promise end-user toolchain requirements. The pin/lock files and [Gate 3 evidence](gate-3-evidence.md) take precedence. Gate 9 revalidates the immutable release candidate and its bundled/runtime requirements.
+
+## Gate 3 supply-chain tooling
+
+| Control | Selected baseline and implication | Primary source |
+| --- | --- | --- |
+| Dependency review | Official Dependency Review Action v5.0.0, pinned to its immutable release commit; pull requests fail for newly introduced High/Critical advisories | [Official v5.0.0 release](https://github.com/actions/dependency-review-action/releases/tag/v5.0.0) |
+| Automated updates | Dependabot monitors uv and GitHub Actions weekly. Current official ecosystem support lists uv but lists pnpm only through v10, so the pinned pnpm 11 graph remains a deliberate manual locked update until official support catches up. | [Dependabot ecosystems](https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#package-ecosystem) |
+| Python advisory coverage | A hash-locked uv export includes every development group and optional extra before pip-audit checks it. | [pip-audit](https://github.com/pypa/pip-audit) and [uv export](https://docs.astral.sh/uv/reference/cli/#uv-export) |
+| Node advisory/license coverage | pnpm audits and inventories production plus development dependencies; the production-only filter is deliberately not used. | [pnpm audit](https://pnpm.io/cli/audit) and [pnpm licenses](https://pnpm.io/cli/licenses) |
 
 ## Official stack baseline
 

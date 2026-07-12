@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "ai",
+  "purpose": "Synthetic disabled-provider and failure-isolation contracts",
+  "scenarios": [
+    {"id": "ai-benign", "kind": "benign", "seed": 1801, "sensitivity": "synthetic", "test_ids": ["AI-EVAL-SAFE-001"]},
+    {"id": "ai-degraded", "kind": "degraded", "seed": 1802, "sensitivity": "synthetic", "test_ids": ["AI-EVAL-ISO-001"]},
+    {"id": "ai-adversarial", "kind": "adversarial", "seed": 1803, "sensitivity": "synthetic-canary", "test_ids": ["AI-EVAL-INJ-001"]}
+  ]
+}

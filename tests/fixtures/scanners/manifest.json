@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "scanners",
+  "purpose": "Synthetic parser and approved-root boundary descriptors",
+  "scenarios": [
+    {"id": "scanner-benign", "kind": "benign", "seed": 1401, "sensitivity": "synthetic", "test_ids": ["UT-SCN-001"]},
+    {"id": "scanner-degraded", "kind": "degraded", "seed": 1402, "sensitivity": "synthetic", "test_ids": ["UT-SCN-001"]},
+    {"id": "scanner-adversarial", "kind": "adversarial", "seed": 1403, "sensitivity": "synthetic-canary", "test_ids": ["SEC-T-AUTH-001"]}
+  ]
+}

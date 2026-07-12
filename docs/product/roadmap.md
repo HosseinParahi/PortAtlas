@@ -4,6 +4,13 @@
 
 This roadmap is sequenced by evidence and approval gates, not calendar promises. Sprint labels represent two-week-equivalent scopes only. A phase may not claim exit until its gate evidence is recorded; later work can be researched but must not bypass shared contract and safety decisions.
 
+## Current dispositions
+
+- Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
+- Gate 3 candidate-local evidence is complete on `codex/gate3-engineering-foundation`; the exact candidate revision, hosted CI, clean Git state, and founder binding remain pending.
+- The active engineering scope is the 22-item [Gate 3 sprint brief](../project/gate-3-sprint-brief.md).
+- Gate 3 packaging activity is research-only. Distributable packaging and lifecycle acceptance remain Phase/Gate 9.
+
 ## Phase and gate map
 
 | Phase | Goal | Principal outputs | Exit gate |
@@ -47,10 +54,24 @@ This roadmap is sequenced by evidence and approval gates, not calendar promises.
 - Demo: trace an acceptance scenario from business outcome through requirement, contract, threat control, and test.
 - Exit gate: Gate 2 confirms that detailed contracts and ADRs match the locked shared schemas and authority boundaries.
 
+### Sprint 1A: Engineering foundation
+
+- Goal: turn the approved contracts into one reproducible, typed monorepo and quality foundation without implementing later-gate product behavior.
+- Dependencies: exact Gate 2 approval at `e53f39916b2348e8626375bb33cac147e27bd217`, Accepted ADRs, and the working-name publication block.
+- Scope: `G3-00` through `G3-21` in the [Gate 3 sprint brief](../project/gate-3-sprint-brief.md): pinned toolchains, frozen locks, Python/domain/persistence/config/auth/adapter/REST foundations, strict React and API-client foundations, version authority, test/fixture harnesses, contributor commands, hooks/CI, optional-dependency isolation, supply-chain controls, research closure, bounded packaging spike, and evidence disposition.
+- Stories: `US-010`–`US-013`.
+- Acceptance criteria: `SRS-NFR-006` and the Gate 3 subset of `SRS-NFR-009` pass through `VT-SRS-NFR-006` and `VT-SRS-NFR-009`; foundation seams must not claim feature requirements assigned to Gates 4–8.
+- Technical tasks: implement exactly the responsibilities named by each `G3-*` item and enforce inward dependency direction, private working-title metadata, deterministic state, secret-safe boundaries, and no telemetry.
+- Tests: formatting, lint, strict typing, unit, contract, integration, architecture, security, browser accessibility, contract-drift, documentation, lock, secret, dependency, and license checks; default checks run with optional services absent.
+- Documentation: verified development commands, toolchain/lock sources, decision/open-question closure, fixture inventory, CI evidence, risks, and exact-revision gate record.
+- Risks: accidental package publication, adapter-owned business rules, unpinned transitive inputs, secret-bearing evidence, optional-service coupling, false feature claims, or premature packaging commitment.
+- Demo: reproduce the frozen bootstrap, exercise the minimal authenticated service/client seams and accessible fixture shell, then run the aggregate checks with Docker, PostgreSQL, Ollama, Rust, and packaging tools disabled.
+- Exit gate: Gate 3 passes only when all `G3-00`–`G3-21` evidence is accepted, required hosted CI is green for the exact candidate revision, Git/locks are clean, and the founder records a disposition. Local checks alone do not close the gate.
+
 ### Sprint 2: Domain, persistence, and macOS collector
 
 - Goal: deliver one tested vertical slice from socket evidence to API/CLI projection.
-- Dependencies: Gate 2 approvals, component contracts, persistence ADR, and green foundation slice.
+- Dependencies: Gate 3 approval, component contracts, persistence ADR, and the accepted green foundation revision.
 - Scope: state/domain contracts, chosen persistence profile, migrations, macOS collection, process identity, safe logs, fixtures.
 - Stories: `US-011`, `US-012`, `US-020`, `US-021`.
 - Acceptance criteria: `SRS-COL-001`, `SRS-COL-002`, and persistence/recovery contracts pass controlled TCP/UDP IPv4/IPv6 cases.
@@ -155,7 +176,7 @@ This roadmap is sequenced by evidence and approval gates, not calendar promises.
 
 - Goal: close release-critical risk and validate the full supported matrix.
 - Dependencies: Sprints 2–9 integrated release-candidate surface and approved packaging/signing strategy.
-- Scope: adversarial/security/evaluation suites, performance/scale, install lifecycle, diagnostics, accessibility, backup/recovery, signing and SBOM preparation. No autonomous patch, launch, shell, or process-kill capability is introduced.
+- Scope: adversarial/security/evaluation suites, performance/scale, packaging implementation and install lifecycle, diagnostics, accessibility, backup/recovery, signing and SBOM preparation. The Gate 3 packaging spike supplies research inputs only. No autonomous patch, launch, shell, or process-kill capability is introduced.
 - Stories: `US-082`–`US-084`, `US-090`–`US-093`, `US-100`, `US-101`.
 - Acceptance criteria: applicable `SRS-SEC-001`–`SRS-SEC-003`, `SRS-NFR-001`–`SRS-NFR-009`, `SRS-OPS-001`–`SRS-OPS-004`, `AC-010`–`AC-015`, performance/accessibility/secret/lifecycle metrics, and core-without-AI checks pass.
 - Tests: threat and AI adversarial suites, scale/latency, clean lifecycle/recovery, final E2E, and founder UAT.
@@ -193,7 +214,7 @@ Every sprint brief must state goal, scope, user stories, acceptance criteria, te
 | Locked MVP parser set and absence of source patch/managed launch/process/Docker lifecycle control | Accepted | Surface inventory and security tests |
 | Working-name and package namespaces | Release input | Clearance record |
 | Signing identity and sponsorship handle | Release input | Configured release metadata |
-| Exact dependency patch versions | Release input | Locks, license audit, and SBOM |
+| Exact dependency patch versions | Gate 3 engineering input and Gate 9 revalidation input | Frozen foundation locks; candidate-time license/security audit and SBOM |
 | Optional AI inclusion | Conditional release input | All Gate 8 AI criteria pass; otherwise AI is deferred |
 
 ## Post-MVP horizon

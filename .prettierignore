@@ -1,0 +1,6 @@
+**/coverage/
+**/dist/
+**/node_modules/
+packages/api-client/src/generated/
+pnpm-lock.yaml
+uv.lock

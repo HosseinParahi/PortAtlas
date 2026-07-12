@@ -4,12 +4,13 @@ This file governs the entire repository. More specific `AGENTS.md` files may nar
 
 ## Current gate
 
-The repository is at the founder approval gate after the product and architecture foundation. Until Gate 2 is explicitly approved:
+Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`. Gate 3 candidate-local evidence is complete on `codex/gate3-engineering-foundation`; Gate 3 has not passed until the exact candidate revision, hosted CI, clean Git state, and founder disposition are recorded. Gate 4 behavior must not begin before that closure.
 
-- Do not add production application code or dependencies.
+- Keep Gate 3 work inside the boundaries in [the sprint brief](docs/project/gate-3-sprint-brief.md). Foundation code and locked dependencies are authorized; later-gate product behavior is not.
 - Do not publish packages, images, manifests, domains, or namespace claims.
 - Treat every operational command as a proposed contract unless it has been implemented and verified.
 - Keep `PortAtlas` labeled as a working title.
+- Keep packaging at Gate 3 to a bounded research spike. Distributable artifacts, signing, notarization, service lifecycle, and packaging acceptance belong to Gate 9.
 
 ## Product invariants
 
@@ -28,7 +29,7 @@ The repository is at the founder approval gate after the product and architectur
 - Use explicit statuses such as Proposed, Accepted, Deferred, Superseded, or Open.
 - Avoid unresolved placeholder markers in committed material.
 
-## Engineering expectations after approval
+## Engineering expectations
 
 - Prefer standard-library tooling for repository checks where practical.
 - Add a failing test before implementation for behavior changes.
@@ -39,3 +40,5 @@ The repository is at the founder approval gate after the product and architectur
 ## Contribution safety
 
 Follow [CONTRIBUTING.md](CONTRIBUTING.md), sign commits with the Developer Certificate of Origin, and route suspected vulnerabilities through [SECURITY.md](SECURITY.md). Do not post secrets or exploit details in public issues.
+
+The accepted root commit predates sign-off enforcement. Its explicit, non-rewriting provenance disposition is recorded in [Gate 2 founder approval](docs/project/gate-2-approval.md#provenance-attestation-for-the-root-commit); it is not a waiver for later commits.

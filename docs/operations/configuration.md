@@ -1,8 +1,8 @@
 # Configuration Operations Contract
 
-Status: **Proposed before implementation**
+Status: **Proposed end-user workflow; Gate 3 schema and loading foundation implemented**
 
-This document describes behavior to implement; it does not claim that a configuration file, command, or UI already exists.
+Gate 3 implements a strict versioned settings schema, safe defaults, platform-path seams, and loader tests. This document describes the broader end-user configuration file, command, persistence, recovery, and UI behavior still to be implemented; it does not claim those workflows exist.
 
 ## Sources and precedence
 

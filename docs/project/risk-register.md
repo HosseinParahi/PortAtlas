@@ -16,8 +16,8 @@ Scores use likelihood and impact from 1 (low) to 5 (high). Exposure is their pro
 | RSK-010 | SSE loss or reordering leaves browser state stale. | 3 | 3 | 9 | Event IDs, revisions, replay window, reconnect invalidation, visible freshness, polling recovery. | API | Gate 4 |
 | RSK-011 | Optional AI ingests sensitive context or follows injected project text. | 3 | 5 | 15 | Explicit opt-in, minimized redacted context, untrusted-content framing, schema validation, non-authoritative output, kill switch. | AI | Gate 6 |
 | RSK-012 | AI or Docker outage corrupts or blocks core state. | 2 | 5 | 10 | Separate failure domains and queues; authoritative writes never depend on either integration; degradation E2E tests. | Architecture | Gate 5 |
-| RSK-013 | Package or platform versions drift before implementation. | 4 | 2 | 8 | Reverify primary sources and lock exact versions during Gate 3. | Engineering | Gate 3 |
-| RSK-014 | Packaging or macOS permission behavior makes installation slow or fragile. | 3 | 4 | 12 | Prototype signed installation and service lifecycle early; measure clean-machine time. | Release | Gate 5 |
+| RSK-013 | Package or platform versions drift before implementation. | 4 | 2 | 8 | Reverify primary sources, pin toolchains, freeze both dependency graphs, and enforce lock drift during Gate 3; re-audit the immutable Gate 9 candidate. | Engineering | Gates 3 and 9 |
+| RSK-014 | Packaging or macOS permission behavior makes installation slow or fragile. | 3 | 4 | 12 | Run only a bounded feasibility/research spike at Gate 3, then implement and measure signed clean-machine installation and service lifecycle at Gate 9. | Release | Gates 3 and 9 |
 | RSK-015 | Diagnostics or logs expose paths, arguments, environment data, or tokens. | 3 | 5 | 15 | Structured redaction, safe defaults, export preview, secret canaries, retention controls, security tests. | Operations | Gate 5 |
 | RSK-016 | Accessibility regressions block keyboard or assistive-technology users. | 3 | 4 | 12 | Radix primitives, semantic tables, focus tests, non-color indicators, automated and manual accessibility gates. | UI | Gate 5 |
 

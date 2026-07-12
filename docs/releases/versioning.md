@@ -1,12 +1,14 @@
 # Versioning Policy
 
-Status: **Proposed pre-implementation policy**
+Status: **Accepted internal foundation authority; proposed public release policy**
 
 ## Current truth
 
-No PortAtlas product version, public tag, package version, compatibility promise, or released artifact exists at this checkpoint. PortAtlas is a working title and cannot be used for public namespace publication until [ADR 0023](../adr/0023-working-name-collision-trademark-clearance.md) is accepted.
+No PortAtlas product version, public tag, public package version, compatibility promise, or released artifact exists at this checkpoint. The private Gate 3 foundation uses `0.0.0.dev0` only as internal implementation metadata. PortAtlas remains a working title and cannot be used for public namespace publication until [ADR 0023](../adr/0023-working-name-collision-trademark-clearance.md) is accepted.
 
-This policy becomes operational only after Gate 3 establishes the version source and release tooling. It does not claim any version command, tag command, package command, or publication command works.
+The `[project].version` field in `pyproject.toml` is the machine-readable internal authority. The installed/source package identity, CLI version output, REST health metadata, FastAPI/OpenAPI information, and generated contract checks derive from or are compared with that field. `python3 scripts/check.py contracts`, CLI contract tests, and the foundation validator reject drift. The browser consumes the API version but has no independent product-version authority, and Gate 3 implements no product metadata for production MCP, diagnostics, installers, or release artifacts.
+
+The internal development value does not choose the first public product version, clear a namespace, authorize a tag, or make the private Python/JavaScript packages publishable.
 
 ## Product version model
 
@@ -36,7 +38,7 @@ Build metadata may identify a source revision or build attempt, but it does not 
 
 ## Version authorities
 
-Gate 3 selects one machine-readable product-version source. Generated surfaces must agree with it:
+The internal authority established during Gate 3 extends to future surfaces. Generated surfaces must agree with it:
 
 - native service and package metadata;
 - CLI version output;
@@ -46,7 +48,7 @@ Gate 3 selects one machine-readable product-version source. Generated surfaces m
 - package and installer metadata;
 - SBOM, provenance, release notes, and artifact names.
 
-The release process compares every surface and blocks mismatches.
+Foundation code may omit package/installer and release-only surfaces that do not exist yet. Gate 9 extends the same authority to them and compares every candidate surface. Private workspace package versions are implementation metadata; they are not public product-version assignments.
 
 ## Independently versioned contracts
 

@@ -7,11 +7,10 @@ import argparse
 import re
 import sys
 from collections import Counter, defaultdict
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Sequence
 from urllib.parse import unquote
-
 
 REQUIRED_FILES: tuple[str, ...] = (
     ".editorconfig",
@@ -34,6 +33,10 @@ REQUIRED_FILES: tuple[str, ...] = (
     "docs/project/open-questions.md",
     "docs/project/research-sources.md",
     "docs/project/first-checkpoint-plan.md",
+    "docs/project/gate-2-approval.md",
+    "docs/project/gate-3-sprint-brief.md",
+    "docs/project/gate-3-packaging-research.md",
+    "docs/project/gate-3-evidence.md",
     "docs/product/project-charter.md",
     "docs/product/vision.md",
     "docs/product/brd.md",
@@ -110,22 +113,39 @@ REQUIRED_FILES: tuple[str, ...] = (
 TEXT_SUFFIXES = {
     "",
     ".cfg",
+    ".cjs",
+    ".css",
+    ".html",
     ".ini",
+    ".js",
+    ".jsx",
     ".json",
+    ".lock",
     ".md",
+    ".mjs",
     ".py",
+    ".scss",
+    ".sh",
+    ".svg",
     ".toml",
+    ".ts",
+    ".tsx",
     ".txt",
+    ".xml",
     ".yaml",
     ".yml",
 }
 IGNORED_PARTS = {
+    ".coverage",
     ".git",
     ".mypy_cache",
     ".pytest_cache",
     ".ruff_cache",
     ".venv",
     "__pycache__",
+    "artifacts",
+    "build",
+    "dist",
     "node_modules",
 }
 
@@ -156,15 +176,14 @@ REQUIREMENT_ID_RE = re.compile(
     r"PRD-(?:FEAT|STORY|US)-\d{3}|"
     r"SRS-(?:COL|SCN|REG|ALC|CNF|API|UI|CLI|MCP|SEC|AI|OPS|NFR)-\d{3})\b"
 )
-SRS_ID_RE = re.compile(
-    r"\bSRS-(?:COL|SCN|REG|ALC|CNF|API|UI|CLI|MCP|SEC|AI|OPS|NFR)-\d{3}\b"
-)
+SRS_ID_RE = re.compile(r"\bSRS-(?:COL|SCN|REG|ALC|CNF|API|UI|CLI|MCP|SEC|AI|OPS|NFR)-\d{3}\b")
 TEST_ID_RE = re.compile(
     r"\b(?:UT|IT|CT|E2E|PERF|UAT|TEST|SEC-T|AI-EVAL)(?:-[A-Z0-9]+)*-\d{3}\b|\bUAT-\d{3}\b"
 )
-VT_SRS_ID_RE = re.compile(
-    r"\bVT-SRS-(?:COL|SCN|REG|ALC|CNF|API|UI|CLI|MCP|SEC|AI|OPS|NFR)-\d{3}\b"
-)
+TRACEABILITY_COLUMN_COUNT = 7
+VT_SRS_ID_RE = re.compile(r"\bVT-SRS-(?:COL|SCN|REG|ALC|CNF|API|UI|CLI|MCP|SEC|AI|OPS|NFR)-\d{3}\b")
+
+
 @dataclass(frozen=True, order=True)
 class Issue:
     """One deterministic validation finding."""
@@ -206,9 +225,10 @@ def iter_text_files(root: Path) -> Iterable[Path]:
     for path in sorted(root.rglob("*")):
         if not path.is_file() or _is_ignored(path, root):
             continue
-        if path.name in {"LICENSE", ".editorconfig", ".gitattributes", ".gitignore"}:
-            yield path
-        elif path.suffix.lower() in TEXT_SUFFIXES:
+        if (
+            path.name in {"LICENSE", ".editorconfig", ".gitattributes", ".gitignore"}
+            or path.suffix.lower() in TEXT_SUFFIXES
+        ):
             yield path
 
 
@@ -232,10 +252,14 @@ def check_required_files(root: Path, required_files: Sequence[str]) -> list[Issu
             continue
         except OSError as error:
             details = error.strerror or str(error)
-            issues.append(Issue(relative, 0, "REQUIRED_READ", f"required file cannot be read: {details}"))
+            issues.append(
+                Issue(relative, 0, "REQUIRED_READ", f"required file cannot be read: {details}")
+            )
             continue
         if not content.strip():
-            issues.append(Issue(relative, 0, "REQUIRED_EMPTY", "required file has no substantive content"))
+            issues.append(
+                Issue(relative, 0, "REQUIRED_EMPTY", "required file has no substantive content")
+            )
     return issues
 
 
@@ -249,7 +273,9 @@ def check_text_readability(root: Path) -> list[Issue]:
             issues.append(Issue(relative, 0, "CONTENT_ENCODING", "text file is not valid UTF-8"))
         except OSError as error:
             details = error.strerror or str(error)
-            issues.append(Issue(relative, 0, "CONTENT_READ", f"text file cannot be read: {details}"))
+            issues.append(
+                Issue(relative, 0, "CONTENT_READ", f"text file cannot be read: {details}")
+            )
     return issues
 
 
@@ -304,15 +330,36 @@ def _check_link_destination(
     path_part, separator, fragment = destination.partition("#")
     path_part = path_part.split("?", 1)[0]
     if path_part.startswith("/"):
-        return [Issue(relative, line_number, "LINK_ABSOLUTE", f"local link must be relative: {destination}")]
+        return [
+            Issue(
+                relative,
+                line_number,
+                "LINK_ABSOLUTE",
+                f"local link must be relative: {destination}",
+            )
+        ]
 
     target = source if not path_part else (source.parent / path_part).resolve()
     try:
         target.relative_to(root.resolve())
     except ValueError:
-        return [Issue(relative, line_number, "LINK_OUTSIDE_ROOT", f"link escapes repository: {destination}")]
+        return [
+            Issue(
+                relative,
+                line_number,
+                "LINK_OUTSIDE_ROOT",
+                f"link escapes repository: {destination}",
+            )
+        ]
     if not target.exists():
-        return [Issue(relative, line_number, "LINK_TARGET_MISSING", f"target does not exist: {destination}")]
+        return [
+            Issue(
+                relative,
+                line_number,
+                "LINK_TARGET_MISSING",
+                f"target does not exist: {destination}",
+            )
+        ]
     if separator and fragment and target.is_file() and target.suffix.lower() == ".md":
         normalized_fragment = _slugify_heading(fragment)
         if normalized_fragment not in _markdown_anchors(target):
@@ -347,10 +394,14 @@ def check_internal_links(root: Path) -> list[Issue]:
                 key = _reference_key(definition.group(1))
                 definitions[key] = (line_number, definition.group(2))
                 issues.extend(
-                    _check_link_destination(root, source, relative, line_number, definition.group(2))
+                    _check_link_destination(
+                        root, source, relative, line_number, definition.group(2)
+                    )
                 )
             for match in MARKDOWN_LINK_RE.finditer(line):
-                issues.extend(_check_link_destination(root, source, relative, line_number, match.group(1)))
+                issues.extend(
+                    _check_link_destination(root, source, relative, line_number, match.group(1))
+                )
 
         for line_number, line in enumerate(lines, start=1):
             for match in REFERENCE_USE_RE.finditer(line):
@@ -400,7 +451,12 @@ def check_adr_numbering(root: Path, expected_count: int = 23) -> list[Issue]:
     for number, paths in sorted(paths_by_number.items()):
         if len(paths) > 1:
             issues.append(
-                Issue(paths[1], 0, "ADR_DUPLICATE", f"ADR-{number:04d} is defined by {', '.join(paths)}")
+                Issue(
+                    paths[1],
+                    0,
+                    "ADR_DUPLICATE",
+                    f"ADR-{number:04d} is defined by {', '.join(paths)}",
+                )
             )
     expected = set(range(1, expected_count + 1))
     observed = set(numbers)
@@ -408,7 +464,12 @@ def check_adr_numbering(root: Path, expected_count: int = 23) -> list[Issue]:
         missing = ", ".join(f"{number:04d}" for number in sorted(expected - observed)) or "none"
         extra = ", ".join(f"{number:04d}" for number in sorted(observed - expected)) or "none"
         issues.append(
-            Issue("docs/adr", 0, "ADR_SEQUENCE", f"expected 0001–{expected_count:04d}; missing {missing}; extra {extra}")
+            Issue(
+                "docs/adr",
+                0,
+                "ADR_SEQUENCE",
+                f"expected 0001-{expected_count:04d}; missing {missing}; extra {extra}",
+            )
         )
     return issues
 
@@ -485,14 +546,24 @@ def check_unique_id_definitions(root: Path) -> list[Issue]:
             path, line_number = locations[1]
             rendered = ", ".join(f"{item_path}:{item_line}" for item_path, item_line in locations)
             issues.append(
-                Issue(path, line_number, "REQUIREMENT_ID_DUPLICATE", f"{identifier} defined more than once: {rendered}")
+                Issue(
+                    path,
+                    line_number,
+                    "REQUIREMENT_ID_DUPLICATE",
+                    f"{identifier} defined more than once: {rendered}",
+                )
             )
     for identifier, locations in sorted(test_definitions.items()):
         if len(locations) > 1:
             path, line_number = locations[1]
             rendered = ", ".join(f"{item_path}:{item_line}" for item_path, item_line in locations)
             issues.append(
-                Issue(path, line_number, "TEST_ID_DUPLICATE", f"{identifier} defined more than once: {rendered}")
+                Issue(
+                    path,
+                    line_number,
+                    "TEST_ID_DUPLICATE",
+                    f"{identifier} defined more than once: {rendered}",
+                )
             )
     return issues
 
@@ -505,7 +576,14 @@ def check_traceability(root: Path) -> list[Issue]:
 
     content = _try_read_text(path)
     if content is None:
-        return [Issue(relative, 0, "TRACEABILITY_ENCODING", "traceability matrix is not readable UTF-8 text")]
+        return [
+            Issue(
+                relative,
+                0,
+                "TRACEABILITY_ENCODING",
+                "traceability matrix is not readable UTF-8 text",
+            )
+        ]
 
     scenario_rows: dict[str, tuple[int, list[str]]] = {}
     issues: list[Issue] = []
@@ -520,10 +598,15 @@ def check_traceability(root: Path) -> list[Issue]:
         scenario_id = match.group(1)
         if scenario_id in scenario_rows:
             issues.append(
-                Issue(relative, line_number, "TRACEABILITY_DUPLICATE", f"{scenario_id} appears in more than one row")
+                Issue(
+                    relative,
+                    line_number,
+                    "TRACEABILITY_DUPLICATE",
+                    f"{scenario_id} appears in more than one row",
+                )
             )
         scenario_rows[scenario_id] = (line_number, cells)
-        if len(cells) != 7:
+        if len(cells) != TRACEABILITY_COLUMN_COUNT:
             issues.append(
                 Issue(
                     relative,
@@ -539,7 +622,12 @@ def check_traceability(root: Path) -> list[Issue]:
         missing = ", ".join(sorted(expected - observed)) or "none"
         extra = ", ".join(sorted(observed - expected)) or "none"
         issues.append(
-            Issue(relative, 0, "TRACEABILITY_COUNT", f"expected AC-001 through AC-015; missing {missing}; extra {extra}")
+            Issue(
+                relative,
+                0,
+                "TRACEABILITY_COUNT",
+                f"expected AC-001 through AC-015; missing {missing}; extra {extra}",
+            )
         )
 
     completeness_patterns = (
@@ -596,23 +684,82 @@ def check_traceability_reference_integrity(root: Path) -> list[Issue]:
         if TEST_ID_RE.fullmatch(identifier)
     }
 
-    issues: list[Issue] = []
-    for identifier in sorted(requirement_refs - requirement_definitions):
-        issues.append(
-            Issue(
-                "docs/requirements/traceability-matrix.md",
-                0,
-                "TRACEABILITY_REQUIREMENT_UNDEFINED",
-                f"{identifier} has no requirement definition",
-            )
+    issues = [
+        Issue(
+            "docs/requirements/traceability-matrix.md",
+            0,
+            "TRACEABILITY_REQUIREMENT_UNDEFINED",
+            f"{identifier} has no requirement definition",
         )
-    for identifier in sorted(test_refs - test_definitions):
+        for identifier in sorted(requirement_refs - requirement_definitions)
+    ]
+    issues.extend(
+        Issue(
+            "docs/requirements/traceability-matrix.md",
+            0,
+            "TRACEABILITY_TEST_UNDEFINED",
+            f"{identifier} has no test definition",
+        )
+        for identifier in sorted(test_refs - test_definitions)
+    )
+    return issues
+
+
+def check_gate3_evidence(root: Path) -> list[Issue]:
+    """Require one evidence-ledger row for every bounded Gate 3 work item."""
+    relative = "docs/project/gate-3-evidence.md"
+    path = root / relative
+    if not path.is_file():
+        return []
+    content = _try_read_text(path)
+    if content is None:
+        return [
+            Issue(
+                relative,
+                0,
+                "GATE3_EVIDENCE_ENCODING",
+                "Gate 3 evidence is not readable UTF-8 text",
+            )
+        ]
+
+    rows: list[tuple[str, int]] = []
+    for line_number, line in enumerate(content.splitlines(), start=1):
+        stripped = line.strip()
+        if not (stripped.startswith("|") and stripped.endswith("|")):
+            continue
+        first_cell = stripped[1:-1].split("|", 1)[0].strip().strip("`*_ ")
+        if re.fullmatch(r"G3-\d{2}", first_cell):
+            rows.append((first_cell, line_number))
+
+    issues: list[Issue] = []
+    counts = Counter(identifier for identifier, _ in rows)
+    for identifier, count in sorted(counts.items()):
+        if count > 1:
+            duplicate_line = next(
+                line_number
+                for row_identifier, line_number in reversed(rows)
+                if row_identifier == identifier
+            )
+            issues.append(
+                Issue(
+                    relative,
+                    duplicate_line,
+                    "GATE3_EVIDENCE_DUPLICATE",
+                    f"{identifier} appears in more than one evidence row",
+                )
+            )
+
+    expected = {f"G3-{number:02d}" for number in range(22)}
+    observed = set(counts)
+    if observed != expected:
+        missing = ", ".join(sorted(expected - observed)) or "none"
+        extra = ", ".join(sorted(observed - expected)) or "none"
         issues.append(
             Issue(
-                "docs/requirements/traceability-matrix.md",
+                relative,
                 0,
-                "TRACEABILITY_TEST_UNDEFINED",
-                f"{identifier} has no test definition",
+                "GATE3_EVIDENCE_COUNT",
+                f"expected G3-00 through G3-21; missing {missing}; extra {extra}",
             )
         )
     return issues
@@ -628,16 +775,31 @@ def check_content_safety(root: Path) -> list[Issue]:
         for line_number, line in enumerate(content.splitlines(), start=1):
             if PLACEHOLDER_RE.search(line):
                 issues.append(
-                    Issue(relative, line_number, "PLACEHOLDER", "unresolved placeholder marker is not allowed")
+                    Issue(
+                        relative,
+                        line_number,
+                        "PLACEHOLDER",
+                        "unresolved placeholder marker is not allowed",
+                    )
                 )
             if any(pattern.search(line) for pattern in PERSONAL_PATH_PATTERNS):
                 issues.append(
-                    Issue(relative, line_number, "PERSONAL_PATH", "absolute personal path is not allowed")
+                    Issue(
+                        relative,
+                        line_number,
+                        "PERSONAL_PATH",
+                        "absolute personal path is not allowed",
+                    )
                 )
             for label, pattern in SECRET_PATTERNS:
                 if pattern.search(line):
                     issues.append(
-                        Issue(relative, line_number, "SECRET_PATTERN", f"possible {label} must be removed or redacted")
+                        Issue(
+                            relative,
+                            line_number,
+                            "SECRET_PATTERN",
+                            f"possible {label} must be removed or redacted",
+                        )
                     )
     return issues
 
@@ -660,6 +822,7 @@ def validate_repository(
     if require_traceability:
         issues.extend(check_traceability(root))
         issues.extend(check_traceability_reference_integrity(root))
+    issues.extend(check_gate3_evidence(root))
     issues.extend(check_content_safety(root))
     return sorted(set(issues))
 

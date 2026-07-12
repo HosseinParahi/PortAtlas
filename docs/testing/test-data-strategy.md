@@ -2,6 +2,8 @@
 
 Status: **Proposed pre-implementation contract**
 
+Gate 3 establishes only versioned synthetic fixture-family catalogs with deterministic seeds, sensitivity labels, and owning test IDs. Scenario payloads, labeled golden outputs, and corpus thresholds are implemented and accepted in their owning Gates 4–8; the catalogs alone do not claim collector, parser, allocator, UI, or AI behavior.
+
 ## Principles
 
 - Synthetic by default, deterministic from a recorded seed, and safe to publish

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "runtime",
+  "purpose": "Synthetic host observation contract inputs",
+  "scenarios": [
+    {"id": "runtime-benign", "kind": "benign", "seed": 1101, "sensitivity": "synthetic", "test_ids": ["UT-COL-001"]},
+    {"id": "runtime-degraded", "kind": "degraded", "seed": 1102, "sensitivity": "synthetic", "test_ids": ["UT-COL-001"]},
+    {"id": "runtime-adversarial", "kind": "adversarial", "seed": 1103, "sensitivity": "synthetic-canary", "test_ids": ["SEC-T-AUTH-001"]}
+  ]
+}

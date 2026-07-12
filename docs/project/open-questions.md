@@ -2,25 +2,46 @@
 
 These questions are intentionally unresolved inputs. None may be answered by inventing founder identity, credentials, namespaces, or release state.
 
-## Founder decisions required before engineering or release gates
+## Founder decisions required for later gates
 
 | ID | Question | Why it matters | Needed by | Default while open |
 |---|---|---|---|---|
-| OQ-001 | Is the Gate 2 documentation baseline approved without changes? | Phase 3 implementation is blocked on acceptance. | Gate 3 start | Stop at Gate 2 |
 | OQ-002 | Which replacement-name candidates should receive professional clearance if `PortAtlas` is not usable? | Current searches found domain and software-related trademark collisions. | Before public namespace creation | Use working title internally only |
 | OQ-003 | What public signing identity and release email should artifacts use? | Packages and signed releases need verifiable ownership. | Packaging gate | Do not generate identities |
 | OQ-004 | Which package, image, MCP, Homebrew, and domain namespaces are founder-approved after clearance? | Namespace squatting and accidental publication are irreversible external actions. | Public release | Publish nothing |
 | OQ-005 | Which sponsorship platform and active handle should be advertised? | Funding metadata must point to a real account. | Funding configuration | Omit funding file |
 | OQ-006 | What quantitative parser corpus represents the founder's real projects? | Recall and precision targets require labeled ground truth. | Scanner acceptance | Use synthetic fixtures plus founder-selected sample later |
 | OQ-007 | What target inventory capacity is representative beyond the baseline test envelope? | Performance thresholds should match real local estates. | Performance gate | Test documented baseline and report scaling curve |
-| OQ-008 | Is optional PostgreSQL intended only for compatibility or for a supported multi-process profile? | Support level affects migrations and operations. | Persistence implementation | Compatibility profile only |
-| OQ-009 | Should browser sessions expire on service restart or survive within a bounded duration? | Affects usability, token rotation, and local threat surface. | Authentication implementation | Short bounded session, invalidated on credential rotation |
+| OQ-008 | Should PostgreSQL expand beyond the accepted optional compatibility profile in a future server mode? | A supported multi-process profile would change operations, concurrency evidence, and product scope. | Version 1/server-mode decision | Compatibility profile only |
 | OQ-010 | Which local model families and hardware envelopes should AI evaluation cover? | Inclusion must be based on reproducible performance, safety, and privacy evidence. | AI evaluation | No model is endorsed or required |
 
-## Research questions owned by Phase 3
+## Resolved gate questions
 
-- Which Python web stack satisfies SSE, typed validation, secure cookies, and packaging constraints with the smallest supported surface?
-- Which SQLAlchemy and migration versions support Python 3.14 and both storage profiles at lock time?
-- Does `psutil` expose sufficient macOS socket/process ownership fidelity for the target OS, and where must `lsof -nP` validate or supplement it?
-- What signed macOS service and packaging path achieves the installation-time target without elevated persistent privileges?
-- What replay duration and resynchronization behavior give the simplest reliable SSE contract?
+| ID | Resolution | Evidence |
+| --- | --- | --- |
+| OQ-001 | Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`; Gate 3 is authorized. | [Gate 2 approval](gate-2-approval.md) |
+| OQ-009 | MVP browser sessions are in-memory and invalidated on service restart, logout, or credential rotation, with a configurable bounded inactivity timeout. | [ADR 0011](../adr/0011-auth.md) |
+
+The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only profile, React data/accessibility primitives, and MCP revision are Accepted decisions rather than open Phase 3 selections. Exact locked dependency versions and verification outcomes are implementation evidence, not founder product decisions.
+
+## Gate 3 verification dispositions
+
+| Question | Candidate-local disposition | Evidence |
+| --- | --- | --- |
+| Exact dependency set | Frozen uv and pnpm graphs satisfy the accepted foundation stack; all groups/extras passed advisory and license inventory. | [Gate 3 evidence](gate-3-evidence.md) |
+| Internal version authority | `pyproject.toml` `0.0.0.dev0` drives or is checked against every implemented product-version surface. | [Versioning](../releases/versioning.md) |
+| Dependency direction | Import-linter plus AST architecture checks enforce inward domain/application and no sibling-adapter imports. | `TEST-ARCH-001` in [test strategy](../testing/test-strategy.md) |
+| Browser-session inactivity | The accepted bounded contract remains unchanged; Gate 3 deliberately implements token primitives rather than a complete browser session. | [ADR 0011](../adr/0011-auth.md) and `G3-08` |
+| Optional-dependency isolation | Default checks pass without Docker, PostgreSQL, Ollama, Rust, MCP, host-collector, or packaging modules; synthetic Docker/provider failure leaves authoritative state unchanged. | `TEST-ISO-001` and [Gate 3 evidence](gate-3-evidence.md) |
+
+These local dispositions close the implementation questions. The exact-revision hosted result remains open under `G3-16`, `G3-18`, and `G3-21`; a local answer is not the final gate disposition.
+
+## Research questions carried to later gates
+
+- Gate 4: Does `psutil` expose sufficient macOS socket/process ownership fidelity for the supported OS, and where must `lsof -nP` validate or supplement it?
+- Gates 4 and 7: What replay duration and resynchronization behavior give the simplest reliable SSE contract under real reconciliation and browser use?
+- Gate 5: Which founder-approved corpus represents real project/parser diversity beyond the synthetic foundation fixtures?
+- Gate 8: Which local model families and hardware envelopes can satisfy every conditional privacy, safety, schema, grounding, resource, and isolation gate?
+- Gate 9: Which signed macOS artifact, service lifecycle, update/rollback path, and distribution mechanism meets clean-machine targets without persistent elevated privilege?
+
+Gate 3 may run the bounded packaging research item `G3-20` only to clarify Gate 9 hypotheses and experiments. It cannot select or accept a release package.

@@ -1,0 +1,279 @@
+name: Gate 3 foundation
+
+on:
+  push:
+    branches:
+      - main
+      - codex/gate3-engineering-foundation
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: gate3-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  docs:
+    name: Documentation and repository contracts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Install the pinned Python baseline
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.3.0
+        with:
+          python-version: 3.13.14
+      - name: Validate documentation and foundation metadata
+        run: |
+          python3 scripts/check.py docs
+          python3 scripts/check.py foundation
+          git diff --check e53f39916b2348e8626375bb33cac147e27bd217...HEAD
+
+  provenance:
+    name: DCO provenance
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out the complete reviewed history
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Enforce matching DCO sign-off after the accepted baseline
+        run: >-
+          python3 scripts/check_dco.py --range
+          e53f39916b2348e8626375bb33cac147e27bd217..HEAD
+
+  dependency-review:
+    name: Dependency change review
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Review pull-request dependency changes
+        if: github.event_name == 'pull_request'
+        uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: high
+      - name: Validate locked dependency policy outside pull requests
+        if: github.event_name != 'pull_request'
+        run: python3 scripts/validate_foundation.py
+
+  python-core:
+    name: Python ${{ matrix.python }} core
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python:
+          - 3.13.14
+          - 3.14.6
+    env:
+      PORTATLAS_PYTHON_VERSION: ${{ matrix.python }}
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned uv release
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.28
+          enable-cache: true
+      - name: Install the selected Python runtime
+        run: uv python install "${PORTATLAS_PYTHON_VERSION}"
+      - name: Synchronize the frozen default environment
+        run: |
+          uv lock --check
+          uv sync --locked --group dev --python "${PORTATLAS_PYTHON_VERSION}"
+      - name: Check Python formatting and architecture
+        run: |
+          python3 scripts/check.py format-python
+          python3 scripts/check.py lint-python
+          python3 scripts/check.py typecheck-python
+      - name: Run core tests without Docker or Ollama
+        run: |
+          python3 scripts/check.py isolation
+          python3 scripts/check.py service-smoke
+          python3 scripts/check.py test-core
+      - name: Build private source distributions
+        run: python3 scripts/check.py build-python
+
+  web:
+    name: React foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned Node LTS runtime
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .node-version
+      - name: Activate the committed pnpm release
+        run: corepack enable
+      - name: Synchronize the frozen web workspace
+        run: corepack pnpm install --frozen-lockfile
+      - name: Check and test the browser foundation
+        run: |
+          python3 scripts/check.py format-web
+          python3 scripts/check.py lint-web
+          python3 scripts/check.py typecheck-web
+          python3 scripts/check.py test-web
+          python3 scripts/check.py build-web
+
+  contracts:
+    name: REST and client contract drift
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned uv release
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.28
+          enable-cache: true
+      - name: Install the pinned Node LTS runtime
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .node-version
+      - name: Synchronize frozen dependencies
+        run: |
+          uv python install 3.13.14
+          uv lock --check
+          uv sync --locked --group dev --python 3.13.14
+          corepack enable
+          corepack pnpm install --frozen-lockfile
+      - name: Reject generated-contract drift
+        run: python3 scripts/check.py contracts
+
+  postgres:
+    name: PostgreSQL compatibility seam
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:18.3-alpine@sha256:54451ecb8ab38c24c3ec123f2fd501303a3a1856a5c66e98cecf2460d5e1e9d7
+        env:
+          POSTGRES_DB: portatlas_test
+          POSTGRES_HOST_AUTH_METHOD: trust
+          POSTGRES_USER: portatlas_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U portatlas_test -d portatlas_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      TEST_POSTGRES_URL: postgresql+psycopg://portatlas_test@127.0.0.1:5432/portatlas_test
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned uv release
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.28
+          enable-cache: true
+      - name: Synchronize the explicit PostgreSQL profile
+        run: |
+          uv python install 3.13.14
+          uv lock --check
+          uv sync --locked --group dev --extra postgres --python 3.13.14
+      - name: Run the shared compatibility seam
+        run: uv run --locked --python 3.13.14 pytest -m postgres
+
+  security:
+    name: Secrets, dependencies, and licenses
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned uv release
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.28
+          enable-cache: true
+      - name: Install the pinned Node LTS runtime
+        uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+        with:
+          node-version-file: .node-version
+      - name: Synchronize frozen dependencies
+        run: |
+          uv python install 3.13.14
+          uv lock --check
+          uv sync --locked --group dev --python 3.13.14
+          corepack enable
+          corepack pnpm install --frozen-lockfile
+      - name: Validate repository safety controls
+        run: python3 scripts/check.py security
+      - name: Audit dependency advisories
+        run: python3 scripts/check.py audit
+      - name: Inventory dependency licenses
+        run: python3 scripts/check.py licenses
+
+  packaging-spike:
+    name: Private macOS packaging feasibility spike
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - name: Check out the reviewed source
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+        with:
+          persist-credentials: false
+      - name: Install the pinned uv release
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          version: 0.11.28
+          enable-cache: true
+      - name: Synchronize the explicit packaging research group
+        run: |
+          uv python install 3.13.14
+          uv lock --check
+          uv sync --locked --group dev --group packaging --python 3.13.14
+      - name: Run the disposable bundle smoke
+        run: python3 scripts/packaging_spike.py
+
+  gate3:
+    name: Gate 3 foundation green
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    needs:
+      - contracts
+      - dependency-review
+      - docs
+      - packaging-spike
+      - postgres
+      - provenance
+      - python-core
+      - security
+      - web
+    steps:
+      - name: Confirm all mandatory foundation jobs passed
+        run: echo "Gate 3 foundation checks are green."

@@ -1,5 +1,9 @@
 # First Checkpoint Plan and Gate Record
 
+- **Status:** Completed and founder-approved
+- **Approved revision:** [`e53f399`](gate-2-approval.md)
+- **Approval date:** 2026-07-11
+
 ## Purpose
 
 Gate 2 turns the founder's master brief into a consistent, testable contract before application scaffolding begins. It is documentation-only apart from the standard-library validator used to protect the documentation itself.
@@ -43,3 +47,5 @@ Gate 2 turns the founder's master brief into a consistent, testable contract bef
 ## Stop condition
 
 After local verification and the four baseline commits, stop. Do not push, publish, install dependencies, or begin Phase 3. The next action requires explicit founder approval of Gate 2.
+
+That stop condition was satisfied. The founder approved the exact Gate 2 revision on 2026-07-11; subsequent Gate 3 work is governed by the [Gate 3 sprint brief](gate-3-sprint-brief.md). The restrictions above remain the historical completion contract for the Gate 2 commits rather than a current block on authorized Gate 3 foundation work.

@@ -1,0 +1,18 @@
+default_install_hook_types:
+  - pre-commit
+  - commit-msg
+
+repos:
+  - repo: local
+    hooks:
+      - id: portatlas-fast-checks
+        name: PortAtlas fast foundation checks
+        entry: python3 scripts/check.py fast
+        language: system
+        pass_filenames: false
+      - id: portatlas-dco
+        name: PortAtlas DCO trailer
+        entry: python3 scripts/check_dco.py
+        language: system
+        stages:
+          - commit-msg

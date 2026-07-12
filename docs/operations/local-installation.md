@@ -1,6 +1,6 @@
 # Local Installation Contract
 
-Status: **Proposed release workflow; no installable artifact exists at Gate 2**
+Status: **Proposed Gate 9 release workflow; no installable artifact exists**
 
 ## User outcome
 
@@ -20,7 +20,9 @@ No step may publish a port beyond loopback, send telemetry, install a model, ena
 
 ## Packaging research gate
 
-Phase 3 must prototype PyInstaller or an equivalent native Python bundle, background service lifecycle, browser launch and bootstrap, signing, notarization, update safety, and complete uninstall. Tauri remains a Version 1 option rather than an MVP prerequisite. Packaging selection is not accepted until clean-machine measurements and threat review are complete.
+Gate 3 performs only the bounded `G3-20` packaging feasibility/research spike described in the [Gate 3 sprint brief](../project/gate-3-sprint-brief.md#evidence-bound-work-items). It may refine hypotheses, risks, and the experiment plan; it does not produce a distributable bundle or accept a package mechanism.
+
+Gate 9 owns PyInstaller or equivalent bundle implementation, background-service lifecycle, browser launch/bootstrap integration, signing, notarization, update/rollback safety, complete uninstall, clean-machine measurements, and packaging ADR acceptance. Tauri remains a Version 1 option rather than an MVP prerequisite.
 
 ## Upgrade and rollback contract
 

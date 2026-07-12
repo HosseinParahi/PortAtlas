@@ -1,0 +1,29 @@
+{
+  "name": "portatlas-foundation-workspace",
+  "private": true,
+  "packageManager": "pnpm@11.10.0",
+  "engines": {
+    "node": "24.18.0",
+    "pnpm": "11.10.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
+    "eslint": "catalog:",
+    "eslint-plugin-jsx-a11y": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-react-refresh": "catalog:",
+    "globals": "catalog:",
+    "prettier": "catalog:",
+    "typescript-eslint": "catalog:"
+  },
+  "scripts": {
+    "build": "corepack pnpm -r --if-present build",
+    "contracts:check": "corepack pnpm -r --if-present contracts:check",
+    "format": "corepack pnpm -r --if-present format",
+    "format:check": "corepack pnpm -r --if-present format:check",
+    "lint": "corepack pnpm -r --if-present lint",
+    "test": "corepack pnpm -r --if-present test",
+    "typecheck": "corepack pnpm -r --if-present typecheck"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "security",
+  "purpose": "Synthetic redaction, authorization, and credential-boundary inputs",
+  "scenarios": [
+    {"id": "security-benign", "kind": "benign", "seed": 1601, "sensitivity": "synthetic", "test_ids": ["SEC-T-AUTH-001"]},
+    {"id": "security-degraded", "kind": "degraded", "seed": 1602, "sensitivity": "synthetic", "test_ids": ["SEC-T-AUTH-001"]},
+    {"id": "security-adversarial", "kind": "adversarial", "seed": 1603, "sensitivity": "synthetic-canary", "test_ids": ["SEC-T-SECRET-001"]}
+  ]
+}

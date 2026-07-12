@@ -11,7 +11,7 @@ This register prevents planning defaults from becoming hidden architectural fact
 | AS-001 | macOS is the only fully implemented MVP host platform. | Founder environment and macOS-first principle | Gate 2 platform ADR and Gate 4 real-machine validation |
 | AS-002 | MVP serves one local OS user. | Lowest-risk local-first mode | Gate 2 auth/data model review |
 | AS-003 | Embedded SQLite is default local persistence behind SQLAlchemy; PostgreSQL is an optional compatibility profile. | Accepted persistence decision | Repository contract tests and performance evidence at Gates 3–5 |
-| AS-004 | A native Python service serving a React browser UI is the accepted MVP runtime architecture. | Accepted runtime decision | Clean-machine and packaging evidence at Gates 3 and 9 |
+| AS-004 | A native Python service serving a React browser UI is the accepted MVP runtime architecture. | Accepted runtime decision | Gate 3 architecture/foundation checks; Gate 9 clean-machine and packaging evidence |
 | AS-005 | Tauri/menu-bar packaging is Version 1. | Accepted scope decision | Revisit only through a later ADR |
 | AS-006 | Codex receives the first polished client integration; Claude-compatible docs follow the client-neutral MCP contract. | Master brief default | Gate 1 product review and current client-doc research |
 | AS-007 | No telemetry is included. | Accepted privacy decision | A later proposal requires a new ADR and privacy review; no enable setting exists |
@@ -58,8 +58,8 @@ This register prevents planning defaults from becoming hidden architectural fact
 | OD-002 | Package, image, MCP, Homebrew, manifest, and domain namespaces | None is approved or reserved by this checkpoint | After OD-001 |
 | OD-003 | Signing identity and public release contact | No identity is invented | Before packaging/release |
 | OD-004 | Sponsorship platform and active handle | Sponsorship is voluntary; omit funding metadata | When founder supplies a verified handle |
-| OD-005 | Native packaging implementation | Research PyInstaller/native service lifecycle, signing, notarization, update, rollback, and uninstall | Gate 3 prototype and packaging ADR acceptance |
-| OD-006 | Exact dependency patch versions | Reverify and lock from primary sources | Gate 3 foundation |
+| OD-005 | Native packaging implementation | Gate 3 records only a bounded feasibility/research spike; Gate 9 implements and verifies the bundle, native service lifecycle, signing, notarization, update, rollback, and uninstall | Gate 3 research evidence; Gate 9 packaging ADR acceptance |
+| OD-006 | Exact dependency patch versions | Gate 3 contributor graphs are pinned and locked; reverify the immutable release graph from primary sources | Gate 9 release candidate |
 | OD-007 | Founder parser corpus and representative capacity hardware | Use synthetic labeled fixtures until approved samples are available | Gates 4–5 |
 | OD-008 | Exact bounded retention durations | Prefer the shorter privacy-preserving behavior; no raw AI history by default | Data/privacy implementation review |
 | OD-009 | Ollama inclusion, provider version, model digest, and resource profile | Excluded unless every conditional gate passes in one recorded run | Gate 8 |
@@ -106,6 +106,16 @@ The MVP CLI set is normative in `SRS-CLI-001`. Managed run, plan application, do
 
 - Approve the accepted ADR outcomes for runtime, persistence, `ProjectInstance`, allocator, SSE, auth, MCP, no telemetry, Apache-2.0, and AI boundaries.
 - Approve threat, data, API/MCP, mutation, packaging-research, and test strategies; authorize no production implementation until this gate is explicit.
+
+Disposition: founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
+
+### Gate 3 engineering foundation
+
+- Complete `G3-00` through `G3-21` in the [Gate 3 sprint brief](../project/gate-3-sprint-brief.md) with exact-revision local and hosted-CI evidence.
+- Keep default checks independent of Docker, PostgreSQL, Ollama, Rust, and packaging tools.
+- Treat adapter shells and synthetic fixture views as foundations rather than proof of later-gate feature behavior.
+- Restrict packaging to the bounded research spike; defer implementation and acceptance to Gate 9.
+- Record an explicit founder disposition for the exact Gate 3 candidate revision.
 
 ### Gate 8 optional AI
 

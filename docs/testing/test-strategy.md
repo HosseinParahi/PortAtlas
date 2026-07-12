@@ -1,6 +1,6 @@
 # Test Strategy
 
-Status: **Proposed pre-implementation quality contract**
+Status: **Gate 3 foundation suites active; later-gate quality contract proposed**
 
 ## Objectives
 
@@ -10,7 +10,10 @@ Testing proves deterministic correctness, managed allocation assurance, honest t
 
 | Test ID | Suite | Scope | Default dependencies | Release role |
 |---|---|---|---|---|
+| TEST-ARCH-001 | Foundation architecture | Inward dependency direction, adapter isolation, prohibited implementation surfaces | Standard-library source inspection | Every foundation change |
+| TEST-ISO-001 | Optional-integration isolation | Docker/provider absence, explicit degradation, and unchanged authoritative state | Synthetic failing adapters; no live services | Every integration-boundary change |
 | UT-DOM-001 | Domain unit and property tests | Entities, value objects, revisions, confidence, state transitions | Python standard test process | Every change |
+| UT-CFG-001 | Configuration unit tests | Schema version, strict parsing, loopback/origin bounds, secret exclusion, platform-path seams | Temporary files and synthetic paths | Every configuration change |
 | UT-COL-001 | Collector unit tests | Normalization, freshness, identity, safe error mapping | Recorded fixtures and fakes | Every change |
 | UT-SCN-001 | Scanner unit and fixture tests | Each locked parser, path policy, provenance | Synthetic project trees | Every change |
 | UT-ALC-001 | Allocator property tests | Range rules, exclusion, determinism, exhaustion | In-memory repository fake | Every change |
@@ -18,9 +21,11 @@ Testing proves deterministic correctness, managed allocation assurance, honest t
 | IT-PG-001 | PostgreSQL compatibility | Same repository contract and migration semantics | Opt-in PostgreSQL profile | Release candidate |
 | IT-DKR-001 | Docker integration | API negotiation, normalization, permissions, degradation | Fake API by default; optional daemon | Release candidate |
 | CT-API-001 | REST/SSE contract | Schemas, errors, idempotency, revisions, replay | In-process service | Every change |
+| CT-CLI-001 | CLI contract | Version identity, help surface, stable machine output, prohibited commands | In-process CLI runner | Every CLI change |
 | CT-MCP-001 | MCP contract | STDIO and HTTP protocol, scopes, copy, cancellation | In-process transports | Every change |
 | E2E-CORE-001 | Core browser journey | Onboard, scan fixtures, inspect evidence, reserve, release | Packaged-like local stack; no Docker or AI | Release candidate |
 | SEC-T-AUTH-001 | Security suite | Auth, origin, CSRF, permissions, traversal, secrets | Local adversarial fixtures | Every release candidate |
+| SEC-T-SECRET-001 | Secret-boundary suite | Redaction canaries across configuration, errors, fixtures, logs, contracts, and diagnostics | Synthetic canaries only | Every security-boundary change |
 | PERF-INV-001 | Capacity and latency | 500 repositories, 2,000 declarations, 1,000 observations | Generated deterministic corpus | Performance gate |
 | AI-EVAL-SAFE-001 | Optional AI evaluation | Privacy, injection, grounding, schemas, isolation | Fake provider; optional local Ollama profile | AI inclusion gate only |
 

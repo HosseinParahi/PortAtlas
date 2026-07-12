@@ -1,23 +1,22 @@
 # MVP Release Checklist
 
-Status: **Proposed pre-implementation checklist**
+Status: **Proposed pre-release checklist; product behavior remains unverified**
 
 ## How to use this checklist
 
-An unchecked item means no release evidence has been accepted for that item. It is an explicit unverified state, not a claim that work exists. Check an item only in the release pull request after linking the exact evidence and reviewer disposition.
+An unchecked item means no release evidence has been accepted for that item. It is an explicit unverified state, not a claim that work exists. Gate dispositions may be checked when exact evidence and reviewer disposition exist; release-candidate items are checked only in the release pull request.
 
 At this checkpoint:
 
-- Gate 2 contracts and ADR decisions are available for founder disposition.
-- Gate 2 approval must be explicitly recorded; this checklist does not infer it.
-- Gate 3 engineering foundation is not claimed.
-- No build, test, package, sign, publish, or release command is claimed working.
+- Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
+- Gate 3 candidate-local evidence is complete in the [evidence ledger](../project/gate-3-evidence.md); exact-revision hosted CI and founder binding remain open.
+- Foundation contributor checks and private metadata/browser builds are verified. No native package, install, sign, publish, or release command is claimed.
 - PortAtlas is a working title. Gate 9 and public release are ineligible while the public-name clearance gate remains blocking.
 
 ## A. Gate and scope control
 
-- [ ] Gate 2 founder approval links the exact requirements, architecture, MVP scope, threat model, test strategy, deployment strategy, and ADR revision.
-- [ ] Gate 3 starts after Gate 2 approval and records pinned toolchains, locked dependencies, supported contributor commands, and green CI evidence.
+- [x] Gate 2 founder approval links the exact requirements, architecture, MVP scope, threat model, test strategy, deployment strategy, and ADR revision at [`e53f399`](../project/gate-2-approval.md).
+- [ ] Gate 3 records pinned toolchains, locked dependencies, supported contributor commands, exact-revision green hosted CI, and founder disposition. Local evidence is complete; hosted binding remains open.
 - [ ] All Must requirements have stable SRS IDs and trace to AC, VT-SRS, or UAT evidence.
 - [ ] Every included issue and pull request lists its US, SRS, AC, VT-SRS, UAT, ADR, and risk impact.
 - [ ] Deferred Version 1 and future capabilities are absent from MVP claims.
@@ -31,7 +30,7 @@ At this checkpoint:
 - [ ] Dependency, asset, model, and bundled-tool license evidence is reviewed.
 - [ ] Documentation states that Apache-2.0 allows commercial use without payment to the maintainers.
 - [ ] Sponsorship is described as voluntary and is not tied to use, commercial rights, features, updates, security handling, support, or telemetry.
-- [ ] Every included contribution has a matching Developer Certificate of Origin Signed-off-by trailer.
+- [ ] Every post-baseline contribution has a matching Developer Certificate of Origin `Signed-off-by` trailer; the unchanged root commit is covered by the reviewed [forward provenance attestation](../project/gate-2-approval.md#provenance-attestation-for-the-root-commit).
 - [ ] CODEOWNERS review is satisfied for release, requirement, architecture, security, and GitHub-governance changes.
 
 ## C. Product truth and managed/unmanaged boundary
@@ -97,6 +96,8 @@ If AI is excluded, the preceding three items complete the MVP AI disposition. If
 - [ ] Screenshots supplement assertions and contain no secrets or private machine data.
 
 ## H. Packaging, migration, and lifecycle
+
+The bounded Gate 3 packaging spike is research input only and checks none of the items in this section. These are Gate 9 evidence requirements.
 
 - [ ] ADR 0007 is Accepted with selected macOS artifact, service lifecycle, signing, notarization, update, rollback, and uninstall design.
 - [ ] Clean installation succeeds on each supported macOS architecture without repository clone, system Python, Node, Docker, Ollama, cloud account, or persistent administrator access.

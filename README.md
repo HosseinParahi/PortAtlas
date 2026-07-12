@@ -1,8 +1,8 @@
 # PortAtlas
 
-> **Working title and pre-implementation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md) is resolved.
+> **Working title and engineering-foundation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md) is resolved.
 
-PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. This repository is at **Gate 2: product and architecture foundation**. It contains documentation, governance, and a documentation validator only; it does not yet contain an installable application.
+PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. The founder approved **Gate 2: product and architecture foundation** at exact revision [`e53f399`](docs/project/gate-2-approval.md). **Gate 3: engineering foundation has complete candidate-local evidence and awaits exact-revision hosted CI and founder binding**; an installable product, completed runtime inventory, and release candidate do not exist.
 
 ## Product promise
 
@@ -38,16 +38,21 @@ The proposed `.portatlas.yaml` manifest is a design contract only and must not b
 - [Test strategy](docs/testing/test-strategy.md)
 - [Delivery roadmap](ROADMAP.md)
 - [Checkpoint record](docs/project/first-checkpoint-plan.md)
+- [Gate 2 approval and provenance](docs/project/gate-2-approval.md)
+- [Gate 3 sprint brief and evidence boundaries](docs/project/gate-3-sprint-brief.md)
+- [Gate 3 evidence ledger](docs/project/gate-3-evidence.md)
 
 ## Current status
 
-Installation, launch, recovery, and API examples are not operational yet. Any such material in `docs/operations/` or `docs/design/` is explicitly a proposed contract for later implementation and verification.
+The Gate 3 foundation includes a private, tested workspace and minimal foundation shells. These do not constitute an installable product or proof of later-gate features. Installation, service lifecycle, recovery, and release packaging remain proposed contracts until their owning gates produce evidence. A command is supported only when [Development setup](docs/operations/development-setup.md) identifies it as verified.
 
-Run the documentation quality gate with:
+After the pinned bootstrap in [Development setup](docs/operations/development-setup.md), run the mandatory default foundation gate with:
 
 ```bash
-python3 scripts/validate_docs.py
+python3 scripts/check.py all
 ```
+
+Network advisory/license checks and opt-in PostgreSQL/packaging research are separate profiles documented in that guide. No default command requires Docker or Ollama.
 
 ## License and commercial use
 

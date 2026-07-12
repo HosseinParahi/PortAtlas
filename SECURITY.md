@@ -2,7 +2,7 @@
 
 ## Supported versions
 
-There are no released or supported versions yet. This repository is a pre-implementation specification and documentation baseline.
+There are no released or supported versions yet. The repository contains a private engineering foundation, but no installable product, public package, or supported runtime inventory exists.
 
 ## Reporting a vulnerability
 
@@ -12,6 +12,14 @@ Use GitHub private vulnerability reporting for this repository when that channel
 
 ## Scope expectations
 
-Future reports may cover host and Docker collection, project scanning, symlink handling, local HTTP authentication, MCP transports, subprocess boundaries, environment parsing, backups, logs, diagnostic bundles, and optional local-AI processing. The accepted security contracts are indexed under [docs/security](docs/security/threat-model.md).
+Current reports may cover the foundation's local HTTP shell, strict configuration, token primitives, persistence seam, dependency workflow, fixtures, and build tooling. Later reports may cover host and Docker collection, project scanning, symlink handling, complete authentication flows, MCP transports, subprocess boundaries, environment parsing, backups, logs, diagnostic bundles, and optional local-AI processing. The accepted security contracts are indexed under [docs/security](docs/security/threat-model.md).
 
 The project does not promise a bounty or response-time service level. Good-faith research that avoids privacy violations, data destruction, persistence, and service disruption is welcome.
+
+## Foundation dependency policy
+
+The Gate 3 candidate uses committed uv and pnpm locks. CI rejects metadata/lock drift, reviews pull-request dependency changes, audits the complete Python lock including development, build-backend, optional-integration, PostgreSQL, and packaging profiles, and audits Node production and development dependencies. A known advisory from either audit blocks the foundation gate unless an explicit security disposition is recorded; no silent ignore list is permitted.
+
+License inventory covers the same complete dependency scope. AGPL and SSPL findings fail the automated Python and Node reviews pending explicit compatibility review. PyInstaller reports GPLv2 with its bootloader exception; it is retained only in the non-default research group and receives a separate Gate 9 review if packaging work selects it. Every license remains subject to human review before a release; a Gate 3 inventory is not a release SBOM or NOTICE file.
+
+Dependabot monitors the supported uv and GitHub Actions ecosystems. The current GitHub support table does not yet list pnpm 11, so Node upgrades remain deliberate locked changes with dependency review and full checks rather than an unverified automated updater.

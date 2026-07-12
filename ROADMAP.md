@@ -1,22 +1,28 @@
 # Roadmap
 
-This file is the public summary. Detailed epics, sprint-sized scopes, dependencies, acceptance criteria, demonstrations, and exit gates are maintained in the [product roadmap](docs/product/roadmap.md) and [delivery plan](docs/project/first-checkpoint-plan.md).
+This file is the public summary. Detailed epics, sprint-sized scopes, dependencies, acceptance criteria, demonstrations, and exit gates are maintained in the [product roadmap](docs/product/roadmap.md), [Gate 3 sprint brief](docs/project/gate-3-sprint-brief.md), and [first-checkpoint plan](docs/project/first-checkpoint-plan.md).
 
 ## Gate 2 — Product and architecture foundation
 
-Status: documentation baseline prepared for founder approval.
+Status: **approved on 2026-07-11 at exact revision [`e53f399`](docs/project/gate-2-approval.md).**
 
 - Establish governance, research, product, UX, requirements, architecture, security, testing, operations, and release contracts.
 - Validate traceability for fifteen founder acceptance scenarios.
 - Resolve no public package or namespace claims.
+- Preserve the initial four-commit history and its explicit provenance record.
 
 ## Gate 3 — Engineering foundation
 
-Status: blocked on explicit Gate 2 approval.
+Status: **candidate-local evidence complete; exact-revision hosted CI and founder binding pending.**
 
-- Establish tested Python and React workspace foundations.
-- Implement the domain kernel, repositories, configuration, authentication skeleton, and adapter seams.
-- Prove core tests run without Docker or Ollama.
+- Complete the evidence-bound work items `G3-00` through `G3-21` without importing later-gate product scope.
+- Establish pinned, locked, typed Python and React workspace foundations, shared contracts, quality controls, hooks, and CI.
+- Implement the domain kernel, persistence seams, configuration and authentication skeletons, adapter boundaries, minimal REST shell, and accessible browser foundation.
+- Prove default core checks run without Docker, PostgreSQL, Ollama, Rust, or packaging tools.
+- Limit packaging to a research spike; distributable packaging and lifecycle proof remain Gate 9 work.
+- Close only after the exact candidate revision, local evidence, required green CI, clean Git state, and founder disposition are recorded.
+
+The [Gate 3 evidence ledger](docs/project/gate-3-evidence.md) records the local candidate. Gate 4 behavior does not begin until the hosted workflow and exact-revision disposition close this gate.
 
 ## Later gates
 

@@ -151,6 +151,16 @@ class ValidateDocsTests(unittest.TestCase):
 
         self.assertEqual({"PLACEHOLDER", "SECRET_PATTERN"}, self.codes(issues))
 
+    def test_content_safety_scans_browser_source_and_lockfiles(self) -> None:
+        token = "gh" + "p_" + "A" * 30
+        self.write("apps/web/src/unsafe.tsx", f'const value = "{token}";\n')
+        self.write("dependency.lock", f"credential={token}\n")
+
+        issues = validate_docs.check_content_safety(self.root)
+
+        self.assertEqual(2, len(issues))
+        self.assertTrue(all(issue.code == "SECRET_PATTERN" for issue in issues))
+
     def test_traceability_reference_integrity_rejects_undefined_ids(self) -> None:
         self.write(
             "docs/requirements/traceability-matrix.md",
@@ -169,11 +179,13 @@ class ValidateDocsTests(unittest.TestCase):
             "| Scenario | BRD | PRD | Requirement | Component | Test | Gate |",
             "|---|---|---|---|---|---|---|",
         ]
-        for number in range(1, 16):
-            rows.append(
+        rows.extend(
+            (
                 f"| AC-{number:03d} | BRD-OBJ-001 | PRD-FEAT-001 | "
                 f"SRS-COL-{number:03d} | CMP-COL | UAT-{number:03d} | Gate 4 |"
             )
+            for number in range(1, 16)
+        )
         self.write("docs/requirements/traceability-matrix.md", "\n".join(rows))
 
         self.assertEqual([], validate_docs.check_traceability(self.root))
@@ -185,6 +197,23 @@ class ValidateDocsTests(unittest.TestCase):
         self.assertEqual(
             {"TRACEABILITY_COUNT", "TRACEABILITY_INCOMPLETE"},
             self.codes(validate_docs.check_traceability(self.root)),
+        )
+
+    def test_gate3_evidence_requires_one_row_for_every_work_item(self) -> None:
+        rows = [
+            "| Work item | Evidence | Disposition |",
+            "| --- | --- | --- |",
+        ]
+        rows.extend(f"| G3-{number:02d} | Recorded evidence | Accepted |" for number in range(22))
+        rows.append("| G3-07 | Duplicate evidence | Accepted |")
+        rows = [row for row in rows if not row.startswith("| G3-19 ")]
+        self.write("docs/project/gate-3-evidence.md", "\n".join(rows))
+
+        issues = validate_docs.check_gate3_evidence(self.root)
+
+        self.assertEqual(
+            {"GATE3_EVIDENCE_COUNT", "GATE3_EVIDENCE_DUPLICATE"},
+            self.codes(issues),
         )
 
     def test_placeholder_personal_path_and_secret_checks_detect_unsafe_text(self) -> None:

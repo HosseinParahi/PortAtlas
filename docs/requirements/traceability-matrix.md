@@ -13,9 +13,10 @@ This first-checkpoint matrix traces each founder acceptance scenario through the
 | `CMP-*` | [SRS architecture component identifiers](srs.md#7-architecture-component-identifiers) |
 | `AC-*` | [Acceptance criteria](acceptance-criteria.md#initial-acceptance-scenarios) |
 | `UAT-*` | `docs/testing/uat-plan.md` |
+| `G3-*` | [Gate 3 sprint brief](../project/gate-3-sprint-brief.md#evidence-bound-work-items) |
 | Gate N | [Product roadmap](../product/roadmap.md#phase-and-gate-map) |
 
-Until implementation begins after Gate 3, `US-*` is the plan-level work item. Implementation issue/PR identifiers shall be appended without replacing these stable upstream IDs.
+During Gate 3, `G3-*` is the bounded engineering work item beneath the stable `US-*` plan item. Later issue/PR identifiers shall be appended without replacing either stable upstream identifier. A foundation seam does not satisfy the later feature requirement whose interface it anticipates.
 
 ## End-to-end scenario matrix
 
@@ -42,6 +43,35 @@ Every row contains the required BRD objective, PRD feature/story, SRS requiremen
 ## Requirement coverage outside a single founder scenario
 
 The scenario rows cover the initial founder-facing acceptance contract. Cross-cutting or lower-level requirements also have stable verification IDs `VT-SRS-COL-001` through `VT-SRS-OPS-003` and `VT-SRS-SEC-001` through `VT-SRS-SCN-005` in [Acceptance criteria](acceptance-criteria.md#functional-verification-catalog). Those verification records cover CLI breadth, configuration round trips, demo isolation, API drift/error contracts, packaging lifecycle, audit integrity, maintainability, full performance scale, platform isolation, and release quality that cannot be proven by one founder scenario alone.
+
+## Gate 3 foundation traceability
+
+Gate 3 primarily advances `US-010` through `US-013`, `SRS-NFR-006`, and foundation controls within `SRS-NFR-009`. The full release-quality requirement remains open through Gate 9. `VT-SRS-NFR-006` and `VT-SRS-NFR-009` are the upstream verification records; focused automated test IDs may supplement but not replace them.
+
+| Gate 3 item | Product/backlog | Requirement/decision | Owning component | Gate 3 evidence | Disposition gate |
+| --- | --- | --- | --- | --- | --- |
+| `G3-00` | `US-003`, `US-010` | Gate 2 contract; `SRS-NFR-009` | All | Exact founder approval and provenance record | Gate 3 |
+| `G3-01` | `US-010` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-OPS`, `CMP-AUD` | Stable sprint scope and evidence ledger | Gate 3 |
+| `G3-02` | `US-010` | `SRS-NFR-006`, ADR 0001 | `CMP-OPS` | Toolchain pins, clean-run versions, CI matrix | Gate 3 |
+| `G3-03` | `US-010` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-OPS` | Private workspaces, frozen locks, lock-drift checks | Gate 3 |
+| `G3-04` | `US-011` | `SRS-NFR-006`, ADR 0001 | `CMP-DOM` | Typed package and inward-import architecture checks | Gate 3 |
+| `G3-05` | `US-011` | `SRS-NFR-006`, ADR 0008 | `CMP-DOM` | Domain contract unit tests including `ProjectInstance` | Gate 3 |
+| `G3-06` | `US-011` | `SRS-NFR-006`, ADR 0002 | `CMP-DOM`, `CMP-DB` | Repository/UoW and minimal persistence contract checks | Gate 3 |
+| `G3-07` | `US-011` | `SRS-NFR-006`, ADR 0010 | `CMP-CFG`, `CMP-SEC` | Versioned config, path, loopback, and no-telemetry tests | Gate 3 |
+| `G3-08` | `US-011`, `US-013` | `SRS-SEC-003`, ADR 0011 | `CMP-SEC` | Token, scope, permission, and redaction tests | Gate 3 |
+| `G3-09` | `US-011` | `SRS-NFR-006`, ADRs 0003, 0004, 0012, 0016 | `CMP-COL`, `CMP-SCN`, `CMP-CLI`, `CMP-MCP`, `CMP-AI` | Interface and optional-import architecture checks | Gate 3 |
+| `G3-10` | `US-011` | `SRS-API-001`, `SRS-NFR-006` | `CMP-API`, `CMP-SEC` | Minimal health/OpenAPI/error contract tests | Gate 3 |
+| `G3-11` | `US-011`, `US-012` | `SRS-NFR-006`, ADR 0006 | `CMP-WEB` | Strict type, component, accessibility, and client-drift checks | Gate 3 |
+| `G3-12` | `US-011` | `SRS-NFR-006`; versioning policy | `CMP-DOM`, `CMP-API`, `CMP-CLI`, `CMP-MCP`, `CMP-WEB` | Version-authority drift check | Gate 3 |
+| `G3-13` | `US-010`, `US-013` | `SRS-NFR-006`, `SRS-NFR-009` | All engineering components | Deterministic unit/contract/integration/architecture/security/web harnesses | Gate 3 |
+| `G3-14` | `US-012` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-DOM`, `CMP-COL`, `CMP-SCN`, `CMP-CNF`, `CMP-SEC`, `CMP-AI` | Synthetic fixture inventory and secret-safety checks | Gate 3 |
+| `G3-15` | `US-010` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-OPS` | Executed contributor commands and documentation agreement | Gate 3 |
+| `G3-16` | `US-010`, `US-013` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-OPS`, `CMP-SEC` | Executable hooks and required hosted-CI result | Gate 3 |
+| `G3-17` | `US-010`, `US-012` | `SRS-NFR-003`, `SRS-NFR-007` | `CMP-DOM`, `CMP-DB`, `CMP-COL`, `CMP-AI` | Default suite with optional services/tools absent | Gate 3 |
+| `G3-18` | `US-010`, `US-013` | `SRS-NFR-006`, `SRS-NFR-009` | `CMP-SEC`, `CMP-OPS` | Secret/dependency/license/vulnerability/supply-chain results | Gate 3 |
+| `G3-19` | `US-010`, `US-011` | `SRS-NFR-006` and Accepted ADRs | All affected components | Dated research closure and owning-gate register updates | Gate 3 |
+| `G3-20` | `US-100` | `SRS-OPS-001`, ADR 0007 | `CMP-OPS` | Research memo only; no package or lifecycle acceptance | Gate 3 research; Gate 9 acceptance |
+| `G3-21` | `US-010`, `US-013` | `SRS-NFR-006`, foundation subset of `SRS-NFR-009` | `CMP-OPS`, `CMP-AUD` | Exact revision, complete check evidence, clean state, founder disposition | Gate 3 |
 
 ## Change-control rules
 

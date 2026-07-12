@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "docker",
+  "purpose": "Synthetic optional Docker adapter states",
+  "scenarios": [
+    {"id": "docker-benign", "kind": "benign", "seed": 1201, "sensitivity": "synthetic", "test_ids": ["IT-DKR-001"]},
+    {"id": "docker-degraded", "kind": "degraded", "seed": 1202, "sensitivity": "synthetic", "test_ids": ["IT-DKR-001"]},
+    {"id": "docker-adversarial", "kind": "adversarial", "seed": 1203, "sensitivity": "synthetic-canary", "test_ids": ["IT-DKR-001"]}
+  ]
+}

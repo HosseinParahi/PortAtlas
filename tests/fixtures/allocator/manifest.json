@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "allocator",
+  "purpose": "Synthetic future reservation and conflict boundary inputs",
+  "scenarios": [
+    {"id": "allocator-benign", "kind": "benign", "seed": 1501, "sensitivity": "synthetic", "test_ids": ["UT-ALC-001"]},
+    {"id": "allocator-degraded", "kind": "degraded", "seed": 1502, "sensitivity": "synthetic", "test_ids": ["UT-ALC-001"]},
+    {"id": "allocator-adversarial", "kind": "adversarial", "seed": 1503, "sensitivity": "synthetic-canary", "test_ids": ["UT-ALC-001"]}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "family": "capacity",
+  "purpose": "Deterministic future UI and API capacity generator parameters",
+  "scenarios": [
+    {"id": "capacity-benign", "kind": "benign", "seed": 1701, "sensitivity": "synthetic", "test_ids": ["PERF-UI-001"]},
+    {"id": "capacity-degraded", "kind": "degraded", "seed": 1702, "sensitivity": "synthetic", "test_ids": ["PERF-API-001"]},
+    {"id": "capacity-adversarial", "kind": "adversarial", "seed": 1703, "sensitivity": "synthetic-canary", "test_ids": ["PERF-DB-001"]}
+  ]
+}
