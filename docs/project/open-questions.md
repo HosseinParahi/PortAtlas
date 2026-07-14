@@ -19,7 +19,7 @@ These questions are intentionally unresolved inputs. None may be answered by inv
 
 | ID | Resolution | Evidence |
 | --- | --- | --- |
-| OQ-001 | Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`; Gate 3 is authorized. | [Gate 2 approval](gate-2-approval.md) |
+| OQ-001 | Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`; Gate 3 subsequently passed on 2026-07-14 at exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`. | [Gate 2 approval](gate-2-approval.md), [Gate 3 evidence](gate-3-evidence.md) |
 | OQ-009 | MVP browser sessions are in-memory and invalidated on service restart, logout, or credential rotation, with a configurable bounded inactivity timeout. | [ADR 0011](../adr/0011-auth.md) |
 
 The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only profile, React data/accessibility primitives, and MCP revision are Accepted decisions rather than open Phase 3 selections. Exact locked dependency versions and verification outcomes are implementation evidence, not founder product decisions.
@@ -34,7 +34,7 @@ The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only prof
 | Browser-session inactivity | The accepted bounded contract remains unchanged; Gate 3 deliberately implements token primitives rather than a complete browser session. | [ADR 0011](../adr/0011-auth.md) and `G3-08` |
 | Optional-dependency isolation | Default checks pass without Docker, PostgreSQL, Ollama, Rust, MCP, host-collector, or packaging modules; synthetic Docker/provider failure leaves authoritative state unchanged. | `TEST-ISO-001` and [Gate 3 evidence](gate-3-evidence.md) |
 
-These engineering dispositions close the implementation questions for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](gate-3-evidence.md). Local and hosted engineering evidence is complete; Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked.
+These engineering dispositions were accepted when Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](gate-3-evidence.md). Gate 4 sprint planning is authorized, but Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance.
 
 ## Research questions carried to later gates
 
@@ -44,4 +44,4 @@ These engineering dispositions close the implementation questions for exact cand
 - Gate 8: Which local model families and hardware envelopes can satisfy every conditional privacy, safety, schema, grounding, resource, and isolation gate?
 - Gate 9: Which signed macOS artifact, service lifecycle, update/rollback path, and distribution mechanism meets clean-machine targets without persistent elevated privilege?
 
-Gate 3 may run the bounded packaging research item `G3-20` only to clarify Gate 9 hypotheses and experiments. It cannot select or accept a release package.
+Gate 3 accepted the bounded packaging research evidence in `G3-20` only as input to Gate 9 hypotheses and experiments. It did not select or accept a release package.

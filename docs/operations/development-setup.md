@@ -1,8 +1,8 @@
 # Development Setup
 
-Status: **Verified Gate 3 contributor guide; local and hosted engineering evidence complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); Gate 3 OPEN pending founder approval bound to that exact revision, and Gate 4 behavior blocked**
+Status: **Verified contributor guide accepted with Gate 3 on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); Gate 4 planning only, with behavior gated on founder acceptance of its proposed sprint brief**
 
-This guide covers the private engineering foundation only. It is not an end-user installation, service-lifecycle, or release-packaging guide. The current evidence is recorded in the [Gate 3 ledger](../project/gate-3-evidence.md).
+This guide covers the accepted private engineering foundation only. It is not an end-user installation, runtime-inventory, service-lifecycle, or release-packaging guide. The exact-revision evidence is recorded in the [Gate 3 ledger](../project/gate-3-evidence.md).
 
 ## Pinned contributor tools
 

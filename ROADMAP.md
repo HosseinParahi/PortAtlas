@@ -13,7 +13,7 @@ Status: **approved on 2026-07-11 at exact revision [`e53f399`](docs/project/gate
 
 ## Gate 3 — Engineering foundation
 
-Status: **local and hosted engineering evidence complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](docs/project/gate-3-evidence.md); Gate 3 OPEN pending founder approval bound to that exact revision.**
+Status: **passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](docs/project/gate-3-evidence.md).**
 
 - Complete the evidence-bound work items `G3-00` through `G3-21` without importing later-gate product scope.
 - Establish pinned, locked, typed Python and React workspace foundations, shared contracts, quality controls, hooks, and CI.
@@ -22,7 +22,7 @@ Status: **local and hosted engineering evidence complete for exact candidate [`4
 - Limit packaging to a research spike; distributable packaging and lifecycle proof remain Gate 9 work.
 - Close only after the exact candidate revision, local evidence, required green CI, clean Git state, and founder disposition are recorded.
 
-The [Gate 3 evidence ledger](docs/project/gate-3-evidence.md) records the local and hosted evidence for the exact engineering candidate. Gate 3 remains **OPEN** pending founder approval bound to that revision, and Gate 4 behavior remains blocked.
+The [Gate 3 evidence ledger](docs/project/gate-3-evidence.md) records the accepted local, hosted, clean-state, and founder-disposition evidence for the exact engineering candidate. Gate 4 sprint planning is the next authorized work. No runtime inventory exists, and Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance.
 
 ## Later gates
 

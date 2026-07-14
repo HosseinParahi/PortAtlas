@@ -16,12 +16,12 @@ All notable changes to this project will be documented here. The project intends
 ### Changed
 
 - Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`.
-- Gate 3 candidate-local evidence is complete; exact-revision hosted CI and founder binding remain required before the exit is claimed.
+- Gate 3 passed on 2026-07-14 at exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`; Gate 4 sprint planning is next, while Gate 4 behavior remains gated on founder acceptance of its proposed sprint brief.
 - The initial missing-trailer exception for root commit `8081f409f54f088d61f9a36433b7e56f2410e66f` is handled by a forward provenance attestation without rewriting accepted history.
 - Gate 3 packaging work is restricted to research; packaging implementation and lifecycle acceptance remain Gate 9.
 
 ### Status
 
 - No installable application package or supported release installation exists.
-- No runtime collector, scanner, allocator, production MCP/AI integration, or product workflow is claimed by the foundation shell.
+- No runtime inventory, collector, scanner, allocator, production MCP/AI integration, or product workflow is claimed by the foundation shell.
 - `PortAtlas` remains a working title pending collision and trademark review.

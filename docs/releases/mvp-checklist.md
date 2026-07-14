@@ -9,14 +9,14 @@ An unchecked item means no release evidence has been accepted for that item. It 
 At this checkpoint:
 
 - Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
-- Local and hosted Gate 3 engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked.
+- Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md). Gate 4 sprint planning is authorized, but no runtime inventory exists and Gate 4 behavior remains gated on founder acceptance of its proposed sprint brief.
 - Foundation contributor checks and private metadata/browser builds are verified. No native package, install, sign, publish, or release command is claimed.
 - PortAtlas is a working title. Gate 9 and public release are ineligible while the public-name clearance gate remains blocking.
 
 ## A. Gate and scope control
 
 - [x] Gate 2 founder approval links the exact requirements, architecture, MVP scope, threat model, test strategy, deployment strategy, and ADR revision at [`e53f399`](../project/gate-2-approval.md).
-- [ ] Gate 3 records pinned toolchains, locked dependencies, supported contributor commands, exact-revision green hosted CI, and founder disposition. Local and hosted engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); founder approval bound to that exact revision remains pending.
+- [x] Gate 3 records pinned toolchains, locked dependencies, supported contributor commands, exact-revision green hosted CI, clean Git state, and founder approval for exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md).
 - [ ] All Must requirements have stable SRS IDs and trace to AC, VT-SRS, or UAT evidence.
 - [ ] Every included issue and pull request lists its US, SRS, AC, VT-SRS, UAT, ADR, and risk impact.
 - [ ] Deferred Version 1 and future capabilities are absent from MVP claims.

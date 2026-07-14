@@ -1,6 +1,6 @@
 # Research Sources and Baseline
 
-Core stack research was checked on **2026-07-11** and Gate 3 supply-chain tooling was rechecked on **2026-07-13**. Machine-readable pins and frozen locks are now the contributor authority recorded by `G3-02` and `G3-03`; observations that are not adopted by those files remain planning inputs rather than product requirements.
+Core stack research was checked on **2026-07-11** and Gate 3 supply-chain tooling was rechecked on **2026-07-13**. Machine-readable pins and frozen locks were accepted with Gate 3 on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](gate-3-evidence.md) and are the contributor authority recorded by `G3-02` and `G3-03`; observations that are not adopted by those files remain planning inputs rather than product requirements.
 
 ## Verified machine snapshot
 
@@ -22,14 +22,14 @@ This snapshot proves only what was present on one development machine. It must n
 
 ## Gate 3 toolchain selection
 
-The Gate 3 research pass selected and the evidence run adopted these foundation pins:
+The Gate 3 research pass selected and the accepted evidence run adopted these foundation pins:
 
-| Tool | Gate 3 candidate | Reason and authority |
+| Tool | Accepted Gate 3 pin | Reason and authority |
 | --- | --- | --- |
 | Python | 3.13.14 | Matches the Accepted Python 3.13 runtime line in ADR 0001; [official Python release](https://www.python.org/downloads/release/python-31314/) |
 | Node.js | 24.18.0 LTS | LTS contributor line compatible with the Vite 8 floor; [official Node release](https://nodejs.org/en/blog/release/v24.18.0) |
-| uv | 0.11.28 | Exact project/lock manager candidate; [PyPI project record](https://pypi.org/project/uv/0.11.28/) |
-| pnpm | 11.10.0 | Exact private-workspace package manager candidate; [npm package record](https://www.npmjs.com/package/pnpm/v/11.10.0) |
+| uv | 0.11.28 | Exact project/lock manager pin; [PyPI project record](https://pypi.org/project/uv/0.11.28/) |
+| pnpm | 11.10.0 | Exact private-workspace package manager pin; [npm package record](https://www.npmjs.com/package/pnpm/v/11.10.0) |
 
 These pins do not overwrite the earlier machine snapshot or promise end-user toolchain requirements. The pin/lock files and [Gate 3 evidence](gate-3-evidence.md) take precedence. Gate 9 revalidates the immutable release candidate and its bundled/runtime requirements.
 

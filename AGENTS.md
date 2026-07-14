@@ -4,13 +4,14 @@ This file governs the entire repository. More specific `AGENTS.md` files may nar
 
 ## Current gate
 
-Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`. Gate 3 candidate-local evidence is complete on `codex/gate3-engineering-foundation`; Gate 3 has not passed until the exact candidate revision, hosted CI, clean Git state, and founder disposition are recorded. Gate 4 behavior must not begin before that closure.
+Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`. Gate 3 [passed on 2026-07-14](docs/project/gate-3-evidence.md) at exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`. Gate 4 sprint planning is authorized; Gate 4 behavior must not begin until its proposed sprint brief receives founder acceptance.
 
-- Keep Gate 3 work inside the boundaries in [the sprint brief](docs/project/gate-3-sprint-brief.md). Foundation code and locked dependencies are authorized; later-gate product behavior is not.
+- Keep current work to Gate 4 sprint planning. Do not add runtime-inventory or other Gate 4 behavior before the founder accepts the proposed sprint brief.
+- Treat [the Gate 3 sprint brief](docs/project/gate-3-sprint-brief.md) and [evidence ledger](docs/project/gate-3-evidence.md) as the historical accepted boundary. Administrative evidence successors do not replace the approved engineering candidate.
 - Do not publish packages, images, manifests, domains, or namespace claims.
 - Treat every operational command as a proposed contract unless it has been implemented and verified.
 - Keep `PortAtlas` labeled as a working title.
-- Keep packaging at Gate 3 to a bounded research spike. Distributable artifacts, signing, notarization, service lifecycle, and packaging acceptance belong to Gate 9.
+- Treat Gate 3 packaging as accepted research evidence only. Distributable artifacts, signing, notarization, service lifecycle, and packaging acceptance belong to Gate 9.
 
 ## Product invariants
 

@@ -93,3 +93,19 @@ Hosted CI, the exact candidate revision, final clean Git state, and immutable di
 Hosted engineering evidence is complete, but Gate 3 remains **OPEN** pending founder approval explicitly bound to `4adf1fb500b651e425735595db528fd42fffba73`. The hosted results do not constitute founder approval, a passed or closed gate, or authorization for Gate 4 product behavior. Any later documentation commit that records this evidence is an administrative evidence successor, not the tested engineering candidate.
 
 Gate 4 product behavior remains blocked. PortAtlas remains a working title, and no package, image, manifest, domain, release artifact, or public namespace was published.
+
+## 2026-07-14 — Gate 3 founder approval and Gate 4 planning authorization
+
+### Exact founder disposition
+
+The founder recorded: `Gate3 Approved at 4adf1fb500b651e425735595db528fd42fffba73. sprint planning Gate 4`.
+
+That exact-revision disposition accepts the bounded Gate 3 engineering foundation and closes Gate 3 as **PASSED** on 2026-07-14. The approved engineering candidate remains immutable revision `4adf1fb500b651e425735595db528fd42fffba73`; the complete scope, hosted runs, and clean-state observation remain in the [Gate 3 evidence ledger](gate-3-evidence.md).
+
+### Administrative evidence successors
+
+Commit `6833dcbadea969e76d2bc7c7515d85e9015b792e` recorded hosted evidence after the engineering candidate. Its [run 29317903755](https://github.com/HosseinParahi/PortAtlas/actions/runs/29317903755) and [run 29317906593](https://github.com/HosseinParahi/PortAtlas/actions/runs/29317906593) are green. That commit and the closure-documentation commit that records this founder disposition are administrative evidence successors; neither replaces the tested and approved engineering candidate.
+
+### Gate 4 boundary
+
+Gate 4 sprint planning is authorized. Gate 4 behavior remains prohibited until a proposed Gate 4 sprint brief receives founder acceptance. No runtime inventory exists, `PortAtlas` remains a working title, and no package, image, manifest, domain, release artifact, or public namespace has been published. The Gate 3 packaging spike supplied accepted research evidence only; packaging implementation and acceptance remain Gate 9 work.

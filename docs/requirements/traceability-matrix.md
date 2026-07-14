@@ -16,7 +16,7 @@ This first-checkpoint matrix traces each founder acceptance scenario through the
 | `G3-*` | [Gate 3 sprint brief](../project/gate-3-sprint-brief.md#evidence-bound-work-items) |
 | Gate N | [Product roadmap](../product/roadmap.md#phase-and-gate-map) |
 
-During Gate 3, `G3-*` is the bounded engineering work item beneath the stable `US-*` plan item. Later issue/PR identifiers shall be appended without replacing either stable upstream identifier. A foundation seam does not satisfy the later feature requirement whose interface it anticipates.
+For Gate 3, `G3-*` was the bounded engineering work item beneath the stable `US-*` plan item. Later issue/PR identifiers shall be appended without replacing either stable upstream identifier. A foundation seam does not satisfy the later feature requirement whose interface it anticipates.
 
 ## End-to-end scenario matrix
 
@@ -46,7 +46,7 @@ The scenario rows cover the initial founder-facing acceptance contract. Cross-cu
 
 ## Gate 3 foundation traceability
 
-Gate 3 primarily advances `US-010` through `US-013`, `SRS-NFR-006`, and foundation controls within `SRS-NFR-009`. The full release-quality requirement remains open through Gate 9. `VT-SRS-NFR-006` and `VT-SRS-NFR-009` are the upstream verification records; focused automated test IDs may supplement but not replace them.
+Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md). Its accepted scope advances `US-010` through `US-013`, `SRS-NFR-006`, and only the foundation controls within `SRS-NFR-009`. The full `SRS-NFR-009` release-quality requirement remains open through Gate 9. `VT-SRS-NFR-006` and `VT-SRS-NFR-009` are the upstream verification records; focused automated test IDs may supplement but not replace them.
 
 | Gate 3 item | Product/backlog | Requirement/decision | Owning component | Gate 3 evidence | Disposition gate |
 | --- | --- | --- | --- | --- | --- |

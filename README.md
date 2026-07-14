@@ -2,7 +2,7 @@
 
 > **Working title and engineering-foundation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md) is resolved.
 
-PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. The founder approved **Gate 2: product and architecture foundation** at exact revision [`e53f399`](docs/project/gate-2-approval.md). Local and hosted Gate 3 engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](docs/project/gate-3-evidence.md). Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked; an installable product, completed runtime inventory, and release candidate do not exist.
+PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. The founder approved **Gate 2: product and architecture foundation** at exact revision [`e53f399`](docs/project/gate-2-approval.md) and **Gate 3: engineering foundation** on 2026-07-14 at exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](docs/project/gate-3-evidence.md). Gate 4 sprint planning is next, but Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance. An installable product, runtime inventory, and release candidate do not exist.
 
 ## Product promise
 
@@ -44,7 +44,7 @@ The proposed `.portatlas.yaml` manifest is a design contract only and must not b
 
 ## Current status
 
-The Gate 3 foundation includes a private, tested workspace and minimal foundation shells. These do not constitute an installable product or proof of later-gate features. Installation, service lifecycle, recovery, and release packaging remain proposed contracts until their owning gates produce evidence. A command is supported only when [Development setup](docs/operations/development-setup.md) identifies it as verified.
+The accepted Gate 3 foundation includes a private, tested workspace and minimal foundation shells. These do not constitute an installable product, a runtime inventory, or proof of later-gate features. Gate 4 sprint planning is authorized, but implementation remains gated on founder acceptance of its proposed sprint brief. Installation, service lifecycle, recovery, and release packaging remain proposed contracts until their owning gates produce evidence. A command is supported only when [Development setup](docs/operations/development-setup.md) identifies it as verified.
 
 After the pinned bootstrap in [Development setup](docs/operations/development-setup.md), run the mandatory default foundation gate with:
 

@@ -58,7 +58,7 @@ This register prevents planning defaults from becoming hidden architectural fact
 | OD-002 | Package, image, MCP, Homebrew, manifest, and domain namespaces | None is approved or reserved by this checkpoint | After OD-001 |
 | OD-003 | Signing identity and public release contact | No identity is invented | Before packaging/release |
 | OD-004 | Sponsorship platform and active handle | Sponsorship is voluntary; omit funding metadata | When founder supplies a verified handle |
-| OD-005 | Native packaging implementation | Gate 3 records only a bounded feasibility/research spike; Gate 9 implements and verifies the bundle, native service lifecycle, signing, notarization, update, rollback, and uninstall | Gate 3 research evidence; Gate 9 packaging ADR acceptance |
+| OD-005 | Native packaging implementation | Gate 3 accepted only bounded feasibility/research evidence; Gate 9 implements and verifies the bundle, native service lifecycle, signing, notarization, update, rollback, and uninstall | Accepted Gate 3 research evidence; Gate 9 packaging ADR acceptance |
 | OD-006 | Exact dependency patch versions | Gate 3 contributor graphs are pinned and locked; reverify the immutable release graph from primary sources | Gate 9 release candidate |
 | OD-007 | Founder parser corpus and representative capacity hardware | Use synthetic labeled fixtures until approved samples are available | Gates 4–5 |
 | OD-008 | Exact bounded retention durations | Prefer the shorter privacy-preserving behavior; no raw AI history by default | Data/privacy implementation review |
@@ -111,11 +111,13 @@ Disposition: founder-approved on 2026-07-11 at exact revision [`e53f399`](../pro
 
 ### Gate 3 engineering foundation
 
-- Complete `G3-00` through `G3-21` in the [Gate 3 sprint brief](../project/gate-3-sprint-brief.md) with exact-revision local and hosted-CI evidence.
+- Accept `G3-00` through `G3-21` in the [Gate 3 sprint brief](../project/gate-3-sprint-brief.md) with exact-revision local, hosted-CI, clean-state, and founder-disposition evidence.
 - Keep default checks independent of Docker, PostgreSQL, Ollama, Rust, and packaging tools.
 - Treat adapter shells and synthetic fixture views as foundations rather than proof of later-gate feature behavior.
 - Restrict packaging to the bounded research spike; defer implementation and acceptance to Gate 9.
 - Record an explicit founder disposition for the exact Gate 3 candidate revision.
+
+Disposition: founder-approved on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md). Gate 4 sprint planning is authorized; behavior remains gated on founder acceptance of its proposed sprint brief.
 
 ### Gate 8 optional AI
 

@@ -1,10 +1,12 @@
 # Test Strategy
 
-Status: **Gate 3 foundation suites active; later-gate quality contract proposed**
+Status: **Gate 3 foundation suites accepted on 2026-07-14 for exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); later-gate quality contract proposed**
 
 ## Objectives
 
 Testing proves deterministic correctness, managed allocation assurance, honest treatment of unmanaged evidence, privacy, accessibility, degradation, and portability of adapter contracts. Core suites must run on a clean development machine with no Docker daemon and no Ollama service.
+
+The Gate 3 disposition accepts only the bounded foundation evidence identified in its sprint brief. It does not claim a runtime inventory, later-gate feature behavior, a completed security review, full `SRS-NFR-009`, packaging acceptance, or release readiness.
 
 ## Test pyramid and stable suites
 
