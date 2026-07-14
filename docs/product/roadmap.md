@@ -7,8 +7,9 @@ This roadmap is sequenced by evidence and approval gates, not calendar promises.
 ## Current dispositions
 
 - Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
-- Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md) on `codex/gate3-engineering-foundation`.
-- Gate 4 sprint planning is the next authorized work. No runtime inventory exists, and Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance.
+- Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md). Pull request [#1](https://github.com/HosseinParahi/PortAtlas/pull/1) was integrated into `main` by fast-forward through closure successor `461243541d6b63ddebf54598c6860ba73abcd012`, and [main CI run 29348251404](https://github.com/HosseinParahi/PortAtlas/actions/runs/29348251404) succeeded. The successor is the Gate 4 planning base, not a replacement engineering candidate.
+- The [Gate 4 sprint brief](../project/gate-4-sprint-brief.md) is **Proposed** on planning-only branch `codex/gate4-runtime-inventory`. Founder acceptance is required before any runtime-inventory or other Gate 4 behavior begins.
+- No runtime inventory exists, Gate 4 implementation has not begun, and Gate 4 has not passed.
 - The 22-item [Gate 3 sprint brief](../project/gate-3-sprint-brief.md) is the accepted historical engineering-foundation scope.
 - Gate 3 packaging activity is research-only. Distributable packaging and lifecycle acceptance remain Phase/Gate 9.
 
@@ -69,12 +70,18 @@ This roadmap is sequenced by evidence and approval gates, not calendar promises.
 - Demo: reproduce the frozen bootstrap, exercise the minimal authenticated service/client seams and accessible fixture shell, then run the aggregate checks with Docker, PostgreSQL, Ollama, Rust, and packaging tools disabled.
 - Exit gate: Gate 3 passes only when all `G3-00`–`G3-21` evidence is accepted, required hosted CI is green for the exact candidate revision, Git/locks are clean, and the founder records a disposition. Local checks alone do not close the gate.
 
+### Gate 4 planning contract
+
+Status: **Proposed — founder review required before implementation.**
+
+The [Gate 4 sprint brief](../project/gate-4-sprint-brief.md) is the current planning source of truth for the two proposed increments summarized as Sprints 2 and 3 below. Their implementation language describes candidate scope only; it is not authorization, working behavior, or accepted evidence. Until the founder accepts that brief, `codex/gate4-runtime-inventory` remains documentation-only.
+
 ### Sprint 2: Domain, persistence, and macOS collector
 
 - Goal: deliver one tested vertical slice from socket evidence to API/CLI projection.
-- Dependencies: Gate 3 approval, component contracts, persistence ADR, and the accepted green foundation revision.
+- Dependencies: founder acceptance of the proposed Gate 4 sprint brief, exact planning base `461243541d6b63ddebf54598c6860ba73abcd012`, component contracts, and the persistence ADR.
 - Scope: state/domain contracts, chosen persistence profile, migrations, macOS collection, process identity, safe logs, fixtures.
-- Stories: `US-011`, `US-012`, `US-020`, `US-021`.
+- Stories: primary `US-011`, `US-012`, `US-020`, and `US-021`, plus only the internal audit/observability prerequisite of `US-053`; its complete reviewer workflow remains Gate 7.
 - Acceptance criteria: `SRS-COL-001`, `SRS-COL-002`, and persistence/recovery contracts pass controlled TCP/UDP IPv4/IPv6 cases.
 - Tests: normalization, process/redaction fixtures, collector integration, migration recovery, permission/timeout/output-limit faults.
 - Documentation: domain/data/collector design, persistence ADR, capability behavior, and verified development/test commands.

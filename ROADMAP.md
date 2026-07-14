@@ -1,6 +1,6 @@
 # Roadmap
 
-This file is the public summary. Detailed epics, sprint-sized scopes, dependencies, acceptance criteria, demonstrations, and exit gates are maintained in the [product roadmap](docs/product/roadmap.md), [Gate 3 sprint brief](docs/project/gate-3-sprint-brief.md), and [first-checkpoint plan](docs/project/first-checkpoint-plan.md).
+This file is the public summary. Detailed epics, sprint-sized scopes, dependencies, acceptance criteria, demonstrations, and exit gates are maintained in the [product roadmap](docs/product/roadmap.md), accepted [Gate 3 sprint brief](docs/project/gate-3-sprint-brief.md), proposed [Gate 4 sprint brief](docs/project/gate-4-sprint-brief.md), and [first-checkpoint plan](docs/project/first-checkpoint-plan.md).
 
 ## Gate 2 — Product and architecture foundation
 
@@ -22,7 +22,18 @@ Status: **passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e4
 - Limit packaging to a research spike; distributable packaging and lifecycle proof remain Gate 9 work.
 - Close only after the exact candidate revision, local evidence, required green CI, clean Git state, and founder disposition are recorded.
 
-The [Gate 3 evidence ledger](docs/project/gate-3-evidence.md) records the accepted local, hosted, clean-state, and founder-disposition evidence for the exact engineering candidate. Gate 4 sprint planning is the next authorized work. No runtime inventory exists, and Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance.
+The [Gate 3 evidence ledger](docs/project/gate-3-evidence.md) records the accepted local, hosted, clean-state, and founder-disposition evidence for the exact engineering candidate. Pull request [#1](https://github.com/HosseinParahi/PortAtlas/pull/1) was integrated into `main` by fast-forward through closure successor `461243541d6b63ddebf54598c6860ba73abcd012`; [main CI run 29348251404](https://github.com/HosseinParahi/PortAtlas/actions/runs/29348251404) succeeded. The successor is the planning base and does not replace the approved engineering candidate.
+
+## Gate 4 — Runtime inventory
+
+Status: **Proposed planning contract; founder acceptance required before implementation.**
+
+- Review the [Gate 4 sprint brief](docs/project/gate-4-sprint-brief.md) on planning-only branch `codex/gate4-runtime-inventory`.
+- Keep all Gate 4 work at sprint planning until the founder accepts the proposed brief.
+- After acceptance, the planned scope may prove host and optional Docker observation while preserving unmanaged discovery as evidence rather than managed-allocation assurance.
+- Do not import Gate 5 project scanning, Gate 6 allocation/conflicts, Gate 7 full UI behavior, Gate 8 MCP/AI, or Gate 9 packaging and release acceptance.
+
+No runtime inventory exists, Gate 4 implementation has not begun, Gate 4 has not passed, and no Gate 4 product behavior is currently authorized.
 
 ## Later gates
 

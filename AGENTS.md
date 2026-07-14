@@ -4,9 +4,9 @@ This file governs the entire repository. More specific `AGENTS.md` files may nar
 
 ## Current gate
 
-Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`. Gate 3 [passed on 2026-07-14](docs/project/gate-3-evidence.md) at exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`. Gate 4 sprint planning is authorized; Gate 4 behavior must not begin until its proposed sprint brief receives founder acceptance.
+Gate 2 was founder-approved on 2026-07-11 at exact revision `e53f39916b2348e8626375bb33cac147e27bd217`. Gate 3 [passed on 2026-07-14](docs/project/gate-3-evidence.md) at exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`, then was integrated into `main` through administrative closure successor `461243541d6b63ddebf54598c6860ba73abcd012`. Gate 4 planning is isolated on `codex/gate4-runtime-inventory` from that exact planning base. The [Gate 4 sprint brief](docs/project/gate-4-sprint-brief.md) is **Proposed**; Gate 4 behavior must not begin until the founder accepts the brief.
 
-- Keep current work to Gate 4 sprint planning. Do not add runtime-inventory or other Gate 4 behavior before the founder accepts the proposed sprint brief.
+- Keep `codex/gate4-runtime-inventory` planning-only. Do not add runtime-inventory or other Gate 4 behavior before the founder accepts the proposed [Gate 4 sprint brief](docs/project/gate-4-sprint-brief.md).
 - Treat [the Gate 3 sprint brief](docs/project/gate-3-sprint-brief.md) and [evidence ledger](docs/project/gate-3-evidence.md) as the historical accepted boundary. Administrative evidence successors do not replace the approved engineering candidate.
 - Do not publish packages, images, manifests, domains, or namespace claims.
 - Treat every operational command as a proposed contract unless it has been implemented and verified.

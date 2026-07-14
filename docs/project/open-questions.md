@@ -36,6 +36,22 @@ The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only prof
 
 These engineering dispositions were accepted when Gate 3 passed on 2026-07-14 at exact engineering candidate [`4adf1fb500b651e425735595db528fd42fffba73`](gate-3-evidence.md). Gate 4 sprint planning is authorized, but Gate 4 behavior remains prohibited until its proposed sprint brief receives founder acceptance.
 
+## Proposed Gate 4 planning dispositions
+
+The following delivery choices are **Proposed — pending founder acceptance** of the [Gate 4 sprint brief](gate-4-sprint-brief.md) at an exact revision. They are not Accepted decisions and do not authorize behavior while the brief remains Proposed.
+
+| Planning topic | Proposed disposition if the brief is accepted | Remaining evidence or later owner | Status |
+| --- | --- | --- | --- |
+| Implementation base | Branch from integrated Gate 3 closure successor `461243541d6b63ddebf54598c6860ba73abcd012`, while `4adf1fb500b651e425735595db528fd42fffba73` remains the immutable approved Gate 3 engineering candidate. | Branch ancestry and clean-state evidence in `G4-00` | Proposed — pending founder acceptance |
+| Acceptance scenarios | Advance only collector evidence for `AC-001`/`UAT-001` and runtime observations for `AC-003`/`UAT-003`; both complete at Gate 7. Make no Gate 4 `AC-007`/`UAT-007` claim. | Gate 6 conflict computation; Gate 7 founder-facing journeys | Proposed — pending founder acceptance |
+| API and CLI subset | Limit REST to authenticated system status/capabilities, collectors/refresh, cursor-paginated observations, and events; limit CLI behavior to `status`, `ports`, and `collectors refresh`. | Later gates complete `SRS-API-001` and `SRS-CLI-001` | Proposed — pending founder acceptance |
+| `SRS-COL-004` split | Gate 4 owns runtime intervals/manual refresh, Docker events, periodic reconciliation, last-good/degraded state, and events. | Gate 5 owns filesystem watcher, scanner debounce, scan cache, and project-scan behavior | Proposed — pending founder acceptance |
+| Project association | Permit only nullable association-ready evidence from validated, redacted, source-attributed runtime or Docker metadata; never discover or assign a root, repository, project, checkout, worktree, or concrete `ProjectInstance` relationship. | Project/`ProjectInstance` discovery, identity resolution, and association are Gate 5 | Proposed — pending founder acceptance |
+| Partial collector results | Atomically add or refresh verified positive facts, but never retire prior facts because they are absent from a partial result; only a complete comparable snapshot may mark prior facts stale. | Fault, restart, and reconciliation evidence in `G4-08`/`G4-14` | Proposed — pending founder acceptance |
+| Conflict boundary | Emit affected resource/port keys and invalidation events only; do not compute, classify, persist, or display conflicts/exposure warnings. | Conflict and exposure behavior are Gate 6 | Proposed — pending founder acceptance |
+| Real profiles | Require a documented real Apple-silicon macOS profile and at least one real Docker Engine API negotiation run, while core remains green with Docker absent. | `G4-11`, `G4-12`, and `G4-16` evidence | Proposed — pending founder acceptance |
+| SSE replay duration | Preserve bounded `Last-Event-ID` plus resynchronization and use Gate 4 reconnect/restart measurements to lock the exact retention duration. | Gate 4 research result; material contract change requires ADR treatment | Proposed — pending founder acceptance |
+
 ## Research questions carried to later gates
 
 - Gate 4: Does `psutil` expose sufficient macOS socket/process ownership fidelity for the supported OS, and where must `lsof -nP` validate or supplement it?

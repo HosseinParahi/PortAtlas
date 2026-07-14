@@ -109,3 +109,17 @@ Commit `6833dcbadea969e76d2bc7c7515d85e9015b792e` recorded hosted evidence after
 ### Gate 4 boundary
 
 Gate 4 sprint planning is authorized. Gate 4 behavior remains prohibited until a proposed Gate 4 sprint brief receives founder acceptance. No runtime inventory exists, `PortAtlas` remains a working title, and no package, image, manifest, domain, release artifact, or public namespace has been published. The Gate 3 packaging spike supplied accepted research evidence only; packaging implementation and acceptance remain Gate 9 work.
+
+## 2026-07-14 — Gate 3 integrated and Gate 4 sprint planning opened
+
+### Fast-forward integration and main verification
+
+- Pull request [#1](https://github.com/HosseinParahi/PortAtlas/pull/1) was integrated into `main` by fast-forward, preserving the accepted Gate 3 history.
+- `main` ended at administrative closure successor `461243541d6b63ddebf54598c6860ba73abcd012`. That successor records disposition and integration state; it does not replace immutable approved engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`.
+- [Main CI run 29348251404](https://github.com/HosseinParahi/PortAtlas/actions/runs/29348251404) succeeded for exact revision `461243541d6b63ddebf54598c6860ba73abcd012`.
+
+### Planning-only branch and proposed brief
+
+Branch `codex/gate4-runtime-inventory` was created from exact planning base `461243541d6b63ddebf54598c6860ba73abcd012`. The [Gate 4 sprint brief](gate-4-sprint-brief.md) is being prepared as a **Proposed** planning contract for founder review. Its preparation does not start Gate 4, authorize product behavior, or constitute gate evidence.
+
+Founder acceptance of the proposed brief is required before any Gate 4 implementation. No runtime inventory, collector behavior, package, image, manifest, domain, release artifact, or public namespace was created or published during planning. `PortAtlas` remains a working title, telemetry remains prohibited, and Gate 3 packaging remains accepted research evidence only; packaging implementation and acceptance remain Gate 9 work.
