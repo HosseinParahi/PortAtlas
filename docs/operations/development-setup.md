@@ -1,6 +1,6 @@
 # Development Setup
 
-Status: **Verified Gate 3 contributor guide; hosted candidate evidence pending**
+Status: **Verified Gate 3 contributor guide; local and hosted engineering evidence complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md); Gate 3 OPEN pending founder approval bound to that exact revision, and Gate 4 behavior blocked**
 
 This guide covers the private engineering foundation only. It is not an end-user installation, service-lifecycle, or release-packaging guide. The current evidence is recorded in the [Gate 3 ledger](../project/gate-3-evidence.md).
 

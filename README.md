@@ -2,7 +2,7 @@
 
 > **Working title and engineering-foundation project.** No package, container image, domain, manifest namespace, or public release may use the PortAtlas name until the naming decision in [ADR-0023](docs/adr/0023-working-name-collision-trademark-clearance.md) is resolved.
 
-PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. The founder approved **Gate 2: product and architecture foundation** at exact revision [`e53f399`](docs/project/gate-2-approval.md). **Gate 3: engineering foundation has complete candidate-local evidence and awaits exact-revision hosted CI and founder binding**; an installable product, completed runtime inventory, and release candidate do not exist.
+PortAtlas is a planned local-first control plane for understanding which development services use which ports, where those claims came from, and where conflicts or capacity risks exist. The founder approved **Gate 2: product and architecture foundation** at exact revision [`e53f399`](docs/project/gate-2-approval.md). Local and hosted Gate 3 engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](docs/project/gate-3-evidence.md). Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked; an installable product, completed runtime inventory, and release candidate do not exist.
 
 ## Product promise
 

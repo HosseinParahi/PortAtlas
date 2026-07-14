@@ -7,7 +7,7 @@ This roadmap is sequenced by evidence and approval gates, not calendar promises.
 ## Current dispositions
 
 - Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md).
-- Gate 3 candidate-local evidence is complete on `codex/gate3-engineering-foundation`; the exact candidate revision, hosted CI, clean Git state, and founder binding remain pending.
+- Local and hosted Gate 3 engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md) on `codex/gate3-engineering-foundation`; Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked.
 - The active engineering scope is the 22-item [Gate 3 sprint brief](../project/gate-3-sprint-brief.md).
 - Gate 3 packaging activity is research-only. Distributable packaging and lifecycle acceptance remain Phase/Gate 9.
 

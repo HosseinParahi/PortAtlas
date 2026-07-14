@@ -1,15 +1,18 @@
 # Gate 3 Engineering Foundation Evidence
 
-- **Status:** Candidate-local evidence complete; exact-revision hosted CI and founder binding open
-- **Evidence date:** 2026-07-13
+- **Status:** **OPEN** — local and hosted engineering evidence complete; exact-revision founder approval pending
+- **Evidence date:** 2026-07-14
 - **Gate 2 input:** [`e53f39916b2348e8626375bb33cac147e27bd217`](gate-2-approval.md)
 - **Working branch:** `codex/gate3-engineering-foundation`
+- **Immutable engineering candidate:** `4adf1fb500b651e425735595db528fd42fffba73`
 - **Internal version authority:** `pyproject.toml` value `0.0.0.dev0`
 - **Public release status:** None; PortAtlas remains a working title
 
 ## Disposition rule
 
-This ledger records the bounded engineering foundation in the [Gate 3 sprint brief](gate-3-sprint-brief.md). A local pass does not close the gate. The immutable candidate revision and hosted workflow URL are entered after the first DCO-signed candidate commit runs successfully. The founder's 2026-07-13 direction authorized continuation toward Gate 3 closure; it waives no failed check, later-gate exclusion, name gate, or exact-revision requirement.
+This ledger records the bounded engineering foundation in the [Gate 3 sprint brief](gate-3-sprint-brief.md). Local and hosted passes do not close the gate. The immutable engineering candidate is `4adf1fb500b651e425735595db528fd42fffba73`; its push and pull-request workflow evidence is recorded below. Gate 3 remains **OPEN** until the founder explicitly approves that exact revision. The founder's 2026-07-13 direction authorized continuation toward Gate 3 closure; it was not exact-revision approval and waives no failed check, later-gate exclusion, name gate, or exact-revision requirement.
+
+Any later commit that records this completed evidence is an administrative evidence successor. It is not the tested engineering candidate and does not replace the exact revision to which the hosted evidence and pending founder disposition apply.
 
 The foundation includes contracts and test seams only. It does not claim working host or Docker inventory, project discovery, parsers, allocation, product REST resources, SSE, production MCP, optional AI behavior, package lifecycle, or release readiness.
 
@@ -61,7 +64,7 @@ Both workspace manifests are private, the Python classifier says `Private :: Do 
 | `python3 scripts/check.py licenses` | Passed after full-profile hydration | Complete Python inventory and 394 Node packages across 12 license expressions; automated AGPL/SSPL policy found no violation |
 | `python3 scripts/check.py isolation` after restoring the default environment | Passed | Optional Python modules absent; production source has no process/network integration import; no Rust artifact |
 
-Commands outside the aggregate that can reach registries or optional services remain deliberately separate. Local evidence is complete; the signed exact revision, hosted workflow, dependency review, and clean post-commit Git state remain open.
+Commands outside the aggregate that can reach registries or optional services remain deliberately separate. Local evidence is complete for exact engineering candidate `4adf1fb500b651e425735595db528fd42fffba73`. Hosted push CI, pull-request CI, dependency review, the macOS packaging-research repeat, the aggregate, and the clean post-commit Git observation are recorded below. Gate 3 remains **OPEN** pending exact-revision founder approval, and Gate 4 product behavior remains blocked.
 
 ## License and vulnerability disposition
 
@@ -91,12 +94,12 @@ Commands outside the aggregate that can reach registries or optional services re
 | G3-13 | Unit, contract, integration, architecture, security, and web harnesses execute with deterministic local inputs | Candidate-local accepted |
 | G3-14 | Eight versioned synthetic fixture-family catalogs with benign, degraded, adversarial, sensitivity, seed, and defined test-ID metadata; behavioral payloads remain in owning gates | Candidate-local accepted |
 | G3-15 | One documented command dispatcher covers bootstrap, quality, contracts, security, isolation, service smoke, and builds | Candidate-local accepted |
-| G3-16 | Installed pre-commit and commit-message hooks, successful all-file hook run, SHA-pinned least-privilege CI, and PR-head-safe exact-history DCO job | Candidate-local accepted; hosted evidence open |
+| G3-16 | Installed pre-commit and commit-message hooks, successful all-file hook run, SHA-pinned least-privilege CI, and PR-head-safe exact-history DCO job | Engineering evidence complete; hosted CI, exact-history DCO, and aggregate successful |
 | G3-17 | Default optional-module absence, static process/network/Rust exclusion, and failing Docker/AI adapters leaving authoritative SQLite state unchanged | Candidate-local accepted |
-| G3-18 | Expanded secret scan, lock checks, digest/action pins, locked build backend, full advisory/license inventory, dependency-review workflow, and Dependabot for supported ecosystems | Candidate-local accepted; hosted dependency review open |
+| G3-18 | Expanded secret scan, lock checks, digest/action pins, locked build backend, full advisory/license inventory, dependency-review workflow, and Dependabot for supported ecosystems | Engineering evidence complete; hosted dependency review successful on PR attempt 2 |
 | G3-19 | Dated toolchain, dependency-review, update-tooling, packaging, and later-gate research dispositions | Candidate-local accepted |
-| G3-20 | Repeated disposable native bundle feasibility and Gate 9 experiment plan in the packaging memo | Candidate-local accepted; hosted macOS repeat open |
-| G3-21 | Exact candidate revision, complete final command durations, hosted CI URL, clean Git state, and founder binding | Open until candidate CI is green |
+| G3-20 | Repeated disposable native bundle feasibility and Gate 9 experiment plan in the packaging memo | Engineering evidence complete; hosted macOS packaging-research repeat successful on PR attempt 2 |
+| G3-21 | Exact candidate revision, complete final command durations, hosted CI URLs, clean Git state, and founder binding | **OPEN** — engineering evidence complete; exact-revision founder approval pending |
 
 ## Optional and deferred profiles
 
@@ -119,4 +122,13 @@ Commands outside the aggregate that can reach registries or optional services re
 
 ## Exact-revision closure
 
-The candidate source revision, hosted CI run URL, post-commit Git status, and exact founder binding are added after the signed candidate commit succeeds remotely. Until then the repository status remains **Gate 3 in progress** and Gate 4 product behavior does not begin.
+The immutable engineering candidate is `4adf1fb500b651e425735595db528fd42fffba73`. It is the revision evaluated by the hosted runs associated with [pull request 1](https://github.com/HosseinParahi/PortAtlas/pull/1).
+
+| Closure input | Recorded evidence | Disposition |
+| --- | --- | --- |
+| Hosted push CI | [Run 29315789627](https://github.com/HosseinParahi/PortAtlas/actions/runs/29315789627) | `success` for the exact engineering candidate |
+| Hosted pull-request CI | [Run 29315801647, attempt 2](https://github.com/HosseinParahi/PortAtlas/actions/runs/29315801647/attempts/2) | `pull_request` event for head SHA `4adf1fb500b651e425735595db528fd42fffba73`; started `2026-07-14T07:50:12Z`, completed `2026-07-14T07:51:26Z`; all 11 jobs succeeded, including dependency review and the Gate 3 aggregate |
+| Clean Git state | Observation at `2026-07-14T07:52:53Z` | `HEAD`, local branch `codex/gate3-engineering-foundation`, and upstream `origin/codex/gate3-engineering-foundation` all resolved to `4adf1fb500b651e425735595db528fd42fffba73`; ahead/behind was `0/0`; no worktree path records were present |
+| Founder exact-revision approval | No approval bound to `4adf1fb500b651e425735595db528fd42fffba73` is recorded as of the evidence date | **OPEN** |
+
+These records complete the hosted engineering evidence; they do not constitute founder approval, a passed or closed gate, or authorization for Gate 4 behavior. Gate 3 remains **OPEN** pending founder approval explicitly bound to `4adf1fb500b651e425735595db528fd42fffba73`, and Gate 4 product behavior remains blocked. Any later documentation commit containing this record is an administrative evidence successor, not the tested engineering candidate. PortAtlas remains a working title, and no package, image, manifest, domain, release artifact, or public namespace was published.

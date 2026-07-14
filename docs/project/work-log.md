@@ -78,3 +78,18 @@ The closure audit found and corrected false-green gaps: the toolchain command no
 The final default aggregate passed in 25.49 seconds. The Python suite passed 101 tests with one explicit PostgreSQL deselection and 87.63% coverage; API-client and browser suites passed 4 and 7 tests. Format, lint, import architecture, strict types, generated contracts, service smoke, locked private builds, optional-integration isolation, clean offline frozen installs, Python 3.14 compatibility, PostgreSQL 18.3 migration/repository compatibility, installed local hooks, the disposable packaging repeat, complete advisory audits, and license inventory passed. Detailed hashes, durations, profiles, and limitations are in the [Gate 3 evidence ledger](gate-3-evidence.md).
 
 Hosted CI, the exact candidate revision, final clean Git state, and immutable disposition remain open. No Gate 4 behavior, package, image, domain, manifest namespace, model, release artifact, or publication was created.
+
+## 2026-07-14 — Gate 3 hosted evidence recorded; founder approval pending
+
+### Exact engineering candidate and hosted runs
+
+- Recorded immutable engineering candidate `4adf1fb500b651e425735595db528fd42fffba73` on [pull request 1](https://github.com/HosseinParahi/PortAtlas/pull/1).
+- Recorded successful [push CI run 29315789627](https://github.com/HosseinParahi/PortAtlas/actions/runs/29315789627) for that exact revision.
+- Recorded [pull-request CI run 29315801647, attempt 2](https://github.com/HosseinParahi/PortAtlas/actions/runs/29315801647/attempts/2): event `pull_request`, head SHA `4adf1fb500b651e425735595db528fd42fffba73`, start `2026-07-14T07:50:12Z`, completion `2026-07-14T07:51:26Z`, and all 11 jobs successful, including dependency review and the Gate 3 aggregate.
+- Recorded the clean-state observation at `2026-07-14T07:52:53Z`: `HEAD`, local branch `codex/gate3-engineering-foundation`, and upstream `origin/codex/gate3-engineering-foundation` all resolved to `4adf1fb500b651e425735595db528fd42fffba73`; ahead/behind was `0/0`; no worktree path records were present.
+
+### Gate disposition
+
+Hosted engineering evidence is complete, but Gate 3 remains **OPEN** pending founder approval explicitly bound to `4adf1fb500b651e425735595db528fd42fffba73`. The hosted results do not constitute founder approval, a passed or closed gate, or authorization for Gate 4 product behavior. Any later documentation commit that records this evidence is an administrative evidence successor, not the tested engineering candidate.
+
+Gate 4 product behavior remains blocked. PortAtlas remains a working title, and no package, image, manifest, domain, release artifact, or public namespace was published.

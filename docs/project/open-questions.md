@@ -26,7 +26,7 @@ The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only prof
 
 ## Gate 3 verification dispositions
 
-| Question | Candidate-local disposition | Evidence |
+| Question | Engineering evidence disposition | Evidence |
 | --- | --- | --- |
 | Exact dependency set | Frozen uv and pnpm graphs satisfy the accepted foundation stack; all groups/extras passed advisory and license inventory. | [Gate 3 evidence](gate-3-evidence.md) |
 | Internal version authority | `pyproject.toml` `0.0.0.dev0` drives or is checked against every implemented product-version surface. | [Versioning](../releases/versioning.md) |
@@ -34,7 +34,7 @@ The Python web/runtime stack, SQLite default, PostgreSQL compatibility-only prof
 | Browser-session inactivity | The accepted bounded contract remains unchanged; Gate 3 deliberately implements token primitives rather than a complete browser session. | [ADR 0011](../adr/0011-auth.md) and `G3-08` |
 | Optional-dependency isolation | Default checks pass without Docker, PostgreSQL, Ollama, Rust, MCP, host-collector, or packaging modules; synthetic Docker/provider failure leaves authoritative state unchanged. | `TEST-ISO-001` and [Gate 3 evidence](gate-3-evidence.md) |
 
-These local dispositions close the implementation questions. The exact-revision hosted result remains open under `G3-16`, `G3-18`, and `G3-21`; a local answer is not the final gate disposition.
+These engineering dispositions close the implementation questions for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](gate-3-evidence.md). Local and hosted engineering evidence is complete; Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked.
 
 ## Research questions carried to later gates
 

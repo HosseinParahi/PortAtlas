@@ -1,10 +1,10 @@
 # Release Process
 
-Status: **Proposed release contract; Gate 3 candidate-local evidence complete**
+Status: **Proposed release contract; Gate 3 local and hosted engineering evidence complete**
 
 ## Current checkpoint truth
 
-This document defines the evidence a future release must produce. Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md). Gate 3 contributor commands are implemented and candidate-local evidence is complete, while exact-revision hosted CI and founder binding remain open. This document does not claim an installable artifact, public release version, signing identity, publication namespace, or accepted package lifecycle.
+This document defines the evidence a future release must produce. Gate 2 was founder-approved on 2026-07-11 at exact revision [`e53f399`](../project/gate-2-approval.md). Local and hosted Gate 3 engineering evidence is complete for exact candidate [`4adf1fb500b651e425735595db528fd42fffba73`](../project/gate-3-evidence.md). Gate 3 remains **OPEN** pending founder approval bound to that exact revision, and Gate 4 behavior remains blocked. This document does not claim an installable artifact, public release version, signing identity, publication namespace, or accepted package lifecycle.
 
 The architecture decisions are recorded for review, but this document does not by itself mark a delivery gate complete. Gate disposition must be explicit and linked from the decision or work log.
 
@@ -19,7 +19,7 @@ PortAtlas is a working title. No public package, executable identity, domain, co
 | Gates 4–8 — Product evidence | Prove runtime, discovery, allocation, UI, MCP, security, and conditional AI behavior | Requirement-linked automated tests, real-machine evidence where required, security review, performance results, and UAT dispositions | No public release is authorized before Gate 9 |
 | Gate 9 — Release | Approve a specific, immutable release candidate | Complete checklist, artifact hashes, lifecycle tests, signing and license evidence, name clearance, security review, UAT, and founder approval | Approval applies only to the reviewed candidate |
 
-Gate 3 work started after the explicit Gate 2 disposition. Implemented contributor commands are supported only where [Development setup](../operations/development-setup.md) records successful evidence. The remaining exit proof is defined by [the Gate 3 sprint brief](../project/gate-3-sprint-brief.md).
+Gate 3 work started after the explicit Gate 2 disposition. Implemented contributor commands are supported only where [Development setup](../operations/development-setup.md) records successful evidence. The remaining Gate 3 exit disposition is founder approval bound to the exact engineering candidate recorded in the [Gate 3 evidence ledger](../project/gate-3-evidence.md); Gate 4 behavior remains blocked.
 
 ## Release roles
 
