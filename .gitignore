@@ -28,6 +28,7 @@ apps/web/dist/
 # Tooling and generated contracts
 .coverage
 coverage.xml
+.memsearch/
 *.whl
 *.tar.gz
 
